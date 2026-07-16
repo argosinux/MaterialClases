@@ -21,6 +21,10 @@ body {
   color: var(--text);
 }
 
+.secondary-page {
+  background: linear-gradient(135deg, #07111f, #14283f 60%, #1f405f);
+}
+
 .hero {
   min-height: 100vh;
   display: grid;
@@ -91,12 +95,84 @@ h1 {
   color: #4d6077;
 }
 
+.card-link a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.page-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.page-card {
+  width: min(1100px, 100%);
+  text-align: center;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.class-card {
+  background: rgba(255, 255, 255, 0.95);
+  color: #102033;
+  border-radius: 16px;
+  padding: 18px;
+  text-align: left;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.class-card h2 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #0f2744;
+}
+
+.class-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #4d6077;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 800px) {
   .cards {
     grid-template-columns: 1fr;
   }
 
   .content {
+    padding: 28px 20px;
+  }
+
+  .class-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-card {
     padding: 28px 20px;
   }
 }
