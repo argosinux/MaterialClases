@@ -40,23 +40,6 @@
             <button class="section-action-btn" id="nextSlideBtn" type="button">Siguiente</button>
           </div>
         </section>
-
-        <section class="modal-section highlight-blue">
-          <h3>Puntos clave</h3>
-          <ul>
-            <li>2001, Utah, 17 personas, ningún método nuevo</li>
-            <li>Origen: destilar patrones comunes de prácticas que ya daban resultado</li>
-            <li>Descripción ≠ receta</li>
-            <li>El mismo error de lectura se repitió con Spotify (2012)</li>
-          </ul>
-        </section>
-
-        <section class="modal-section highlight-quote">
-          <h3>Pregunta generadora</h3>
-          <p>
-            Si el Manifiesto solo describe lo que ya funcionaba en 2001, ¿qué está funcionando hoy en tu organización que nadie documentó todavía?
-          </p>
-        </section>
       </div>
     </div>
 
@@ -72,15 +55,35 @@
       function renderSlide() {
         if (currentSlide === 0) {
           slideContent.innerHTML = `
-            <p>
-              En febrero de 2001, diecisiete personas se reunieron en Utah. No fueron a crear una metodología: fueron a buscar qué tenían en común las formas de trabajo que ya estaban funcionando —XP, Scrum, DSDM.
-            </p>
-            <p>
-              El Manifiesto Ágil no es una invención, es una descripción de lo que ya funcionaba.
-            </p>
+            <section class="modal-section">
+              <p>
+                En febrero de 2001, diecisiete personas se reunieron en Utah. No fueron a crear una metodología: fueron a buscar qué tenían en común las formas de trabajo que ya estaban funcionando —XP, Scrum, DSDM.
+              </p>
+              <p>
+                El Manifiesto Ágil no es una invención, es una descripción de lo que ya funcionaba.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Puntos clave</h3>
+              <ul>
+                <li>2001, Utah, 17 personas, ningún método nuevo</li>
+                <li>Origen: destilar patrones comunes de prácticas que ya daban resultado</li>
+                <li>Descripción ≠ receta</li>
+                <li>El mismo error de lectura se repitió con Spotify (2012)</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Pregunta generadora</h3>
+              <p>
+                Si el Manifiesto solo describe lo que ya funcionaba en 2001, ¿qué está funcionando hoy en tu organización que nadie documentó todavía?
+              </p>
+            </section>
           `;
           prevSlideBtn.hidden = true;
           nextSlideBtn.hidden = false;
+          nextSlideBtn.disabled = false;
           nextSlideBtn.textContent = 'Siguiente';
         } else {
           slideContent.innerHTML = `
@@ -89,7 +92,9 @@
             </div>
           `;
           prevSlideBtn.hidden = false;
-          nextSlideBtn.hidden = true;
+          nextSlideBtn.hidden = false;
+          nextSlideBtn.disabled = true;
+          nextSlideBtn.textContent = 'Siguiente';
         }
       }
 
