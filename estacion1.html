@@ -24,6 +24,7 @@
           <div class="slider-nav">
             <button class="section-action-btn" id="prevSlideBtn" type="button" hidden>Anterior</button>
             <button class="section-action-btn" id="nextSlideBtn" type="button">Siguiente</button>
+            <button class="section-action-btn" id="activityBtn" type="button" hidden>Actividad</button>
           </div>
         </div>
 
@@ -38,6 +39,7 @@
       const slideContent = document.getElementById('slideContent');
       const prevSlideBtn = document.getElementById('prevSlideBtn');
       const nextSlideBtn = document.getElementById('nextSlideBtn');
+      const activityBtn = document.getElementById('activityBtn');
       let currentSlide = 0;
 
       const slides = [
@@ -362,6 +364,7 @@
         prevSlideBtn.hidden = currentSlide === 0;
         nextSlideBtn.disabled = currentSlide === slides.length - 1;
         nextSlideBtn.textContent = currentSlide === slides.length - 1 ? 'Final' : 'Siguiente';
+        activityBtn.hidden = currentSlide !== slides.length - 1;
       }
 
       prevSlideBtn.addEventListener('click', () => {
@@ -372,6 +375,10 @@
       nextSlideBtn.addEventListener('click', () => {
         currentSlide = Math.min(slides.length - 1, currentSlide + 1);
         renderSlide();
+      });
+
+      activityBtn.addEventListener('click', () => {
+        window.location.href = 'https://miro.com/app/board/uXjVH6syhgc=/';
       });
 
       renderSlide();
