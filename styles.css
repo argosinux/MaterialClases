@@ -236,6 +236,7 @@ h1 {
 .modal-section p {
   color: var(--ink-soft);
   line-height: 1.7;
+  text-align: left;
 }
 
 .modal-section li {
