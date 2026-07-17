@@ -118,7 +118,7 @@ h1 {
 }
 
 .page-card {
-  width: min(1100px, 100%);
+  width: min(1300px, 100%);
   text-align: center;
   padding: 40px;
   border: 1px solid var(--canvas-border);
@@ -242,10 +242,12 @@ h1 {
 .modal-section li {
   color: var(--ink-soft);
   line-height: 1.7;
+  text-align: left;
 }
 
 .modal-section ul {
   padding-left: 20px;
+  text-align: left;
 }
 
 .modal-section.highlight-blue {
@@ -311,6 +313,20 @@ h1 {
 .section-action-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.manifesto-quote {
+  position: relative;
+  margin: 0 0 18px;
+  padding: 16px 20px 16px 28px;
+  border-left: 4px solid var(--orange);
+  background: rgba(255, 99, 43, 0.06);
+  border-radius: 0 12px 12px 0;
+  color: var(--earth);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  text-align: left;
 }
 
 .modal-section.highlight-quote {
