@@ -18,43 +18,35 @@
         <p class="eyebrow">Estación 1</p>
         <h1>Hacer Agile vs. Ser Ágil</h1>
         <p class="intro">
-          Explora este contenido con el slider interactivo para ver el punto de partida del enfoque ágil.
+          Explora este contenido con una secuencia de slides para entender el punto de partida del enfoque ágil.
         </p>
 
-        <div class="detail-actions">
-          <button class="card-button" id="openModalBtn">Slider</button>
-          <a class="back-link" href="fundamentos-agiles.html">← Volver a estaciones</a>
-        </div>
-      </section>
-    </main>
-
-    <div class="modal-overlay" id="modalOverlay" hidden>
-      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <button class="modal-close" id="closeModalBtn" aria-label="Cerrar modal">×</button>
-        <h2 id="modalTitle">El Manifiesto no inventó nada</h2>
-
-        <section class="modal-section" id="modalContent">
-          <div id="slideContent"></div>
+        <div class="slider-shell">
+          <h2 id="slideTitle">El Manifiesto no inventó nada</h2>
+          <div id="slideContent" class="slide-content"></div>
           <div class="slider-nav">
             <button class="section-action-btn" id="prevSlideBtn" type="button" hidden>Anterior</button>
             <button class="section-action-btn" id="nextSlideBtn" type="button">Siguiente</button>
           </div>
-        </section>
-      </div>
-    </div>
+        </div>
+
+        <div class="detail-actions">
+          <a class="back-link" href="metodologias-agiles.html">← Volver a clases</a>
+        </div>
+      </section>
+    </main>
 
     <script>
-      const openModalBtn = document.getElementById('openModalBtn');
-      const closeModalBtn = document.getElementById('closeModalBtn');
-      const modalOverlay = document.getElementById('modalOverlay');
+      const slideTitle = document.getElementById('slideTitle');
       const slideContent = document.getElementById('slideContent');
       const prevSlideBtn = document.getElementById('prevSlideBtn');
       const nextSlideBtn = document.getElementById('nextSlideBtn');
       let currentSlide = 0;
 
-      function renderSlide() {
-        if (currentSlide === 0) {
-          slideContent.innerHTML = `
+      const slides = [
+        {
+          title: 'El Manifiesto no inventó nada',
+          html: `
             <section class="modal-section">
               <p>
                 En febrero de 2001, diecisiete personas se reunieron en Utah. No fueron a crear una metodología: fueron a buscar qué tenían en común las formas de trabajo que ya estaban funcionando —XP, Scrum, DSDM.
@@ -80,60 +72,38 @@
                 Si el Manifiesto solo describe lo que ya funcionaba en 2001, ¿qué está funcionando hoy en tu organización que nadie documentó todavía?
               </p>
             </section>
-          `;
-          prevSlideBtn.hidden = true;
-          nextSlideBtn.hidden = false;
-          nextSlideBtn.disabled = false;
-          nextSlideBtn.textContent = 'Siguiente';
-        } else {
-          slideContent.innerHTML = `
+          `
+        },
+        {
+          title: 'Principios del enfoque ágil',
+          html: `
             <div class="image-slide">
               <img src="img/principios.png" alt="Principios del enfoque ágil" />
             </div>
-          `;
-          prevSlideBtn.hidden = false;
-          nextSlideBtn.hidden = false;
-          nextSlideBtn.disabled = true;
-          nextSlideBtn.textContent = 'Siguiente';
+          `
         }
+      ];
+
+      function renderSlide() {
+        const slide = slides[currentSlide];
+        slideTitle.textContent = slide.title;
+        slideContent.innerHTML = slide.html;
+        prevSlideBtn.hidden = currentSlide === 0;
+        nextSlideBtn.disabled = currentSlide === slides.length - 1;
+        nextSlideBtn.textContent = currentSlide === slides.length - 1 ? 'Final' : 'Siguiente';
       }
 
-      openModalBtn.addEventListener('click', () => {
-        currentSlide = 0;
+      prevSlideBtn.addEventListener('click', () => {
+        currentSlide = Math.max(0, currentSlide - 1);
         renderSlide();
-        modalOverlay.hidden = false;
-        document.body.style.overflow = 'hidden';
       });
-
-      const closeModal = () => {
-        currentSlide = 0;
-        renderSlide();
-        modalOverlay.hidden = true;
-        document.body.style.overflow = '';
-      };
 
       nextSlideBtn.addEventListener('click', () => {
-        currentSlide = 1;
+        currentSlide = Math.min(slides.length - 1, currentSlide + 1);
         renderSlide();
       });
 
-      prevSlideBtn.addEventListener('click', () => {
-        currentSlide = 0;
-        renderSlide();
-      });
-
-      closeModalBtn.addEventListener('click', closeModal);
-      modalOverlay.addEventListener('click', (event) => {
-        if (event.target === modalOverlay) {
-          closeModal();
-        }
-      });
-
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-          closeModal();
-        }
-      });
+      renderSlide();
     </script>
   </body>
 </html>
