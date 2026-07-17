@@ -149,10 +149,11 @@ h1 {
   margin-top: 14px;
   padding: 10px 16px;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: white;
   text-decoration: none;
   font-weight: 600;
+  border: 1px solid #1e40af;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -242,6 +243,18 @@ h1 {
 .modal-section.highlight-blue li,
 .modal-section.highlight-blue p {
   color: white;
+}
+
+.section-action-btn {
+  margin: 8px 0 12px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffffff, #dbeafe);
+  color: #1d4ed8;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
 }
 
 .modal-section.highlight-quote {
