@@ -34,18 +34,15 @@
         <h2 id="modalTitle">El Manifiesto no inventó nada</h2>
 
         <section class="modal-section" id="modalContent">
-          <p>
-            En febrero de 2001, diecisiete personas se reunieron en Utah. No fueron a crear una metodología: fueron a buscar qué tenían en común las formas de trabajo que ya estaban funcionando —XP, Scrum, DSDM. 
-          </p>
-          <p>
-            El Manifiesto Ágil no es una invención, es una descripción de lo que ya funcionaba
-          </p>
-          <button class="section-action-btn" id="nextSlideBtn" type="button">Siguiente</button>
+          <div id="slideContent"></div>
+          <div class="slider-nav">
+            <button class="section-action-btn" id="prevSlideBtn" type="button" hidden>Anterior</button>
+            <button class="section-action-btn" id="nextSlideBtn" type="button">Siguiente</button>
+          </div>
         </section>
 
         <section class="modal-section highlight-blue">
           <h3>Puntos clave</h3>
-          <button class="section-action-btn" type="button">Ver resumen</button>
           <ul>
             <li>2001, Utah, 17 personas, ningún método nuevo</li>
             <li>Origen: destilar patrones comunes de prácticas que ya daban resultado</li>
@@ -67,25 +64,57 @@
       const openModalBtn = document.getElementById('openModalBtn');
       const closeModalBtn = document.getElementById('closeModalBtn');
       const modalOverlay = document.getElementById('modalOverlay');
-      const modalContent = document.getElementById('modalContent');
+      const slideContent = document.getElementById('slideContent');
+      const prevSlideBtn = document.getElementById('prevSlideBtn');
       const nextSlideBtn = document.getElementById('nextSlideBtn');
+      let currentSlide = 0;
+
+      function renderSlide() {
+        if (currentSlide === 0) {
+          slideContent.innerHTML = `
+            <p>
+              En febrero de 2001, diecisiete personas se reunieron en Utah. No fueron a crear una metodología: fueron a buscar qué tenían en común las formas de trabajo que ya estaban funcionando —XP, Scrum, DSDM.
+            </p>
+            <p>
+              El Manifiesto Ágil no es una invención, es una descripción de lo que ya funcionaba.
+            </p>
+          `;
+          prevSlideBtn.hidden = true;
+          nextSlideBtn.hidden = false;
+          nextSlideBtn.textContent = 'Siguiente';
+        } else {
+          slideContent.innerHTML = `
+            <div class="image-slide">
+              <img src="img/principios.png" alt="Principios del enfoque ágil" />
+            </div>
+          `;
+          prevSlideBtn.hidden = false;
+          nextSlideBtn.hidden = true;
+        }
+      }
 
       openModalBtn.addEventListener('click', () => {
+        currentSlide = 0;
+        renderSlide();
         modalOverlay.hidden = false;
         document.body.style.overflow = 'hidden';
       });
 
       const closeModal = () => {
+        currentSlide = 0;
+        renderSlide();
         modalOverlay.hidden = true;
         document.body.style.overflow = '';
       };
 
       nextSlideBtn.addEventListener('click', () => {
-        modalContent.innerHTML = `
-          <div class="image-slide">
-            <img src="img/principios.png" alt="Principios del enfoque ágil" />
-          </div>
-        `;
+        currentSlide = 1;
+        renderSlide();
+      });
+
+      prevSlideBtn.addEventListener('click', () => {
+        currentSlide = 0;
+        renderSlide();
       });
 
       closeModalBtn.addEventListener('click', closeModal);
