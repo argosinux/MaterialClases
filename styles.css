@@ -233,7 +233,12 @@ h1 {
   margin-bottom: 10px;
 }
 
-.modal-section p,
+.modal-section p {
+  color: var(--ink-soft);
+  line-height: 1.7;
+  text-align: center;
+}
+
 .modal-section li {
   color: var(--ink-soft);
   line-height: 1.7;
