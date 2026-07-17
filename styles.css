@@ -257,6 +257,19 @@ h1 {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
 }
 
+.image-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.image-slide img {
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
 .modal-section.highlight-quote {
   background: linear-gradient(135deg, #fef3c7, #fde68a);
   border-left: 5px solid #d97706;
