@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estación 1 - Hacer Agile vs. Ser Ágil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="secondary-page">
+    <main class="page-shell">
+      <section class="page-card">
+        <p class="eyebrow">Estación 1</p>
+        <h1>Hacer Agile vs. Ser Ágil</h1>
+        <p class="intro">
+          Explora este contenido con el slider interactivo para ver el punto de partida del enfoque ágil.
+        </p>
+
+        <div class="detail-actions">
+          <button class="card-button" id="openModalBtn">Slider</button>
+          <a class="back-link" href="fundamentos-agiles.html">← Volver a estaciones</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-overlay" id="modalOverlay" hidden>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" id="closeModalBtn" aria-label="Cerrar modal">×</button>
+        <h2 id="modalTitle">Slide 1 — El Manifiesto no inventó nada</h2>
+
+        <section class="modal-section">
+          <h3>Contenido</h3>
+          <p>
+            En febrero de 2001, diecisiete personas se reunieron en Utah. No fueron a crear una metodología: fueron a buscar qué tenían en común las formas de trabajo que ya estaban funcionando —XP, Scrum, DSDM. El Manifiesto Ágil no es una invención, es una descripción de lo que ya funcionaba.
+          </p>
+          <p>
+            Esta distinción importa más de lo que parece. Una descripción documenta un contexto específico en un momento específico. Una receta promete resultados replicables. El Manifiesto fue lo primero y la industria lo leyó como lo segundo. En la Estación 4 vamos a ver que exactamente el mismo error de lectura ocurrió once años después con Spotify.
+          </p>
+        </section>
+
+        <section class="modal-section">
+          <h3>Puntos clave</h3>
+          <ul>
+            <li>2001, Utah, 17 personas, ningún método nuevo</li>
+            <li>Origen: destilar patrones comunes de prácticas que ya daban resultado</li>
+            <li>Descripción ≠ receta</li>
+            <li>El mismo error de lectura se repitió con Spotify (2012)</li>
+          </ul>
+        </section>
+
+        <section class="modal-section">
+          <h3>Pregunta generadora</h3>
+          <p>
+            Si el Manifiesto solo describe lo que ya funcionaba en 2001, ¿qué está funcionando hoy en tu organización que nadie documentó todavía?
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      const openModalBtn = document.getElementById('openModalBtn');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      const modalOverlay = document.getElementById('modalOverlay');
+
+      openModalBtn.addEventListener('click', () => {
+        modalOverlay.hidden = false;
+        document.body.style.overflow = 'hidden';
+      });
+
+      const closeModal = () => {
+        modalOverlay.hidden = true;
+        document.body.style.overflow = '';
+      };
+
+      closeModalBtn.addEventListener('click', closeModal);
+      modalOverlay.addEventListener('click', (event) => {
+        if (event.target === modalOverlay) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeModal();
+        }
+      });
+    </script>
+  </body>
+</html>
