@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase 1 - Introducción al Customer Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="secondary-page">
+    <main class="page-shell">
+      <section class="page-card">
+        <p class="eyebrow">Clase 1</p>
+        <h1>Introducción al Customer Experience</h1>
+
+        <div class="slider-shell">
+          <h2 id="slideTitle"></h2>
+          <div id="slideContent" class="slide-content"></div>
+          <div class="slider-nav">
+            <button class="section-action-btn" id="prevSlideBtn" type="button" hidden>Anterior</button>
+            <button class="section-action-btn" id="nextSlideBtn" type="button">Siguiente</button>
+          </div>
+        </div>
+
+        <div class="slider-shell">
+          <h2 id="slide2Title"></h2>
+          <div id="slide2Content" class="slide-content"></div>
+          <div class="slider-nav">
+            <button class="section-action-btn" id="prevSlide2Btn" type="button" hidden>Anterior</button>
+            <button class="section-action-btn" id="nextSlide2Btn" type="button">Siguiente</button>
+          </div>
+        </div>
+
+        <div class="slider-shell">
+          <h2 id="slide3Title"></h2>
+          <div id="slide3Content" class="slide-content"></div>
+          <div class="slider-nav">
+            <button class="section-action-btn" id="prevSlide3Btn" type="button" hidden>Anterior</button>
+            <button class="section-action-btn" id="nextSlide3Btn" type="button">Siguiente</button>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <a class="back-link" href="customerexperience.html">← Volver a clases</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      function initSlider(titleEl, contentEl, prevBtn, nextBtn, slides) {
+        let current = 0;
+
+        function render() {
+          const slide = slides[current];
+          titleEl.textContent = slide.title;
+          contentEl.innerHTML = slide.html;
+          prevBtn.hidden = current === 0;
+          nextBtn.disabled = current === slides.length - 1;
+          nextBtn.textContent = current === slides.length - 1 ? 'Final' : 'Siguiente';
+        }
+
+        prevBtn.addEventListener('click', () => {
+          current = Math.max(0, current - 1);
+          render();
+        });
+
+        nextBtn.addEventListener('click', () => {
+          current = Math.min(slides.length - 1, current + 1);
+          render();
+        });
+
+        render();
+      }
+
+      const slides = [
+        {
+          title: 'El cliente vive una experiencia completa',
+          html: `
+            <section class="modal-section">
+              <p>
+                El cliente no separa la experiencia en áreas internas.
+              </p>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>No piensa:</h3>
+                <ul>
+                  <li>Esto fue culpa de marketing.
+                  <li>Esto fue problema de operaciones.
+                  <li>Esto depende de soporte.
+                  <li>Esto corresponde a tecnología.
+                </ul>
+              </article>
+
+              <article class="modal-section">
+                <h3>El cliente piensa:</h3>
+                <ul>
+                  <li>La marca me resolvió.
+                  <li>La marca me complicó.
+                </ul>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <h3>Punto clave</h3>
+              <p>
+                El cliente no vive organigramas... Vive experiencias.
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'La experiencia empieza antes de la compra',
+          html: `
+            <section class="modal-section">
+              <p>Customer Experience ocurre en todo el recorrido:</p>
+              <ul>
+                <li>Cuando el cliente descubre la marca.
+                <li>Cuando busca información.
+                <li>Cuando compara opciones.
+                <li>Cuando consulta.
+                <li>Cuando compra.
+                <li>Cuando usa el producto o servicio.
+                <li>Cuando necesita ayuda.
+                <li>Cuando decide volver, recomendar o abandonar.
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Punto clave</h3>
+              <p>
+                Cada interacción suma confianza o genera fricción.
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'Mi experiencia inolvidable',
+          html: `
+            <section class="modal-section highlight-quote">
+              <p>Pensá en una experiencia como cliente que recuerdes mucho.</p>
+              <ul>
+                <li>¿Qué marca o servicio fue?
+                <li>¿Qué querías lograr?
+                <li>¿Qué pasó?
+                <li>¿Cómo te sentiste?
+                <li>¿Volverías a elegir esa marca?
+                <li>¿La recomendarías?
+              </ul>
+            </section>
+          `
+        },
+        {
+          title: 'Experiencias inolvidables',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_Inolvidable.png" alt="Experiencias inolvidables" />
+            </div>
+          `
+        },
+        {
+          title: 'Experiencias inolvidables',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_Inolvidable2.png" alt="Experiencias inolvidables" />
+            </div>
+          `
+        },
+        {
+          title: 'Cancelar suscripción',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_CancelarSuscripcion.png" alt="Cancelar suscripción" />
+            </div>
+          `
+        },
+        {
+          title: 'Cancelar suscripción',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_CancelarSuscripcion2.png" alt="Cancelar suscripción" />
+            </div>
+          `
+        }
+      ];
+
+      const slides2 = [
+        {
+          title: 'De la empresa al cliente',
+          html: `
+            <section class="modal-section">
+              <p>
+                La evolución del marketing muestra cómo cambió el foco de las empresas: del producto a experiencias más personalizadas, conectadas y humanas.
+              </p>
+            </section>
+
+            <div class="evolution-grid">
+              <article class="evolution-card">
+                <h3>Marketing 1.0 — Producto</h3>
+                <p>El foco estaba en fabricar y vender productos de forma masiva. La empresa decidía qué ofrecer y el cliente tenía un rol más pasivo.</p>
+                <p class="example-text">Ford Modelo T: producción estandarizada, eficiente y masiva. El cliente se adaptaba a lo que la empresa ofrecía.</p>
+              </article>
+
+              <article class="evolution-card">
+                <h3>Marketing 2.0 — Consumidor</h3>
+                <p>Con más competencia, las marcas empiezan a segmentar y a entender que no todos los clientes tienen las mismas necesidades.</p>
+                <p class="example-text">Zapatillas deportivas: ya no se vende "una zapatilla para todos", sino modelos para running, trekking, fútbol o uso urbano.</p>
+              </article>
+
+              <article class="evolution-card">
+                <h3>Marketing 3.0 — Valores</h3>
+                <p>El cliente comienza a valorar el propósito de las marcas. Ya no compra solo por precio o funcionalidad, sino también por confianza e impacto social.</p>
+                <p class="example-text">Patagonia: no solo vende ropa outdoor; comunica compromiso ambiental y consumo responsable.</p>
+              </article>
+
+              <article class="evolution-card">
+                <h3>Marketing 4.0 — Digital</h3>
+                <p>La relación marca-cliente se vuelve más conectada e interactiva. Redes sociales, e-commerce, reseñas y canales digitales cambian la forma de comprar.</p>
+                <p class="example-text">Mercado Libre / Amazon: el cliente busca, compara, lee reseñas, compra online y hace seguimiento del envío desde distintos canales.</p>
+              </article>
+
+              <article class="evolution-card">
+                <h3>Marketing 5.0 — Tecnología humana</h3>
+                <p>La tecnología, los datos, la IA y la automatización se usan para crear experiencias más personalizadas, relevantes y humanas.</p>
+                <p class="example-text">Netflix / Spotify: usan datos e IA para recomendar contenido según gustos, historial y comportamiento del usuario.</p>
+              </article>
+            </div>
+          `
+        }
+      ];
+
+      const slides3 = [
+        {
+          title: 'Cliente vs. Producto: un cambio de lógica',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_productocliente.png" alt="Cliente vs. Producto: un cambio de lógica" />
+            </div>
+          `
+        }
+      ];
+
+      initSlider(
+        document.getElementById('slideTitle'),
+        document.getElementById('slideContent'),
+        document.getElementById('prevSlideBtn'),
+        document.getElementById('nextSlideBtn'),
+        slides
+      );
+
+      initSlider(
+        document.getElementById('slide2Title'),
+        document.getElementById('slide2Content'),
+        document.getElementById('prevSlide2Btn'),
+        document.getElementById('nextSlide2Btn'),
+        slides2
+      );
+
+      initSlider(
+        document.getElementById('slide3Title'),
+        document.getElementById('slide3Content'),
+        document.getElementById('prevSlide3Btn'),
+        document.getElementById('nextSlide3Btn'),
+        slides3
+      );
+    </script>
+  </body>
+</html>
