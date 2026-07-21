@@ -398,6 +398,60 @@ h1 {
   color: var(--orange);
 }
 
+.priority-matrix {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(38, 7, 0, 0.12);
+}
+
+.priority-matrix th,
+.priority-matrix td {
+  padding: 16px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.priority-matrix thead th {
+  background: linear-gradient(135deg, var(--orange), var(--amber));
+  color: white;
+  font-weight: 700;
+}
+
+.priority-matrix thead th:first-child {
+  background: transparent;
+  box-shadow: none;
+}
+
+.priority-matrix tbody th {
+  background: rgba(255, 99, 43, 0.1);
+  color: var(--earth);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.priority-matrix tbody td {
+  background: #fffaf2;
+  color: var(--ink-soft);
+}
+
+.priority-matrix tbody td strong {
+  color: var(--earth);
+}
+
+@media (max-width: 700px) {
+  .priority-matrix th,
+  .priority-matrix td {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+}
+
 .back-link {
   display: inline-block;
   margin-top: 24px;
