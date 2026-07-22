@@ -41,8 +41,9 @@
           titleEl.textContent = slide.title;
           contentEl.innerHTML = slide.html;
           prevBtn.hidden = current === 0;
+          nextBtn.hidden = current === slides.length - 1;
           nextBtn.disabled = false;
-          nextBtn.textContent = current === slides.length - 1 ? 'Clase 3' : 'Siguiente';
+          nextBtn.textContent = 'Siguiente';
         }
 
         prevBtn.addEventListener('click', () => {
