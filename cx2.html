@@ -41,8 +41,8 @@
           titleEl.textContent = slide.title;
           contentEl.innerHTML = slide.html;
           prevBtn.hidden = current === 0;
-          nextBtn.disabled = current === slides.length - 1;
-          nextBtn.textContent = current === slides.length - 1 ? 'Final' : 'Siguiente';
+          nextBtn.disabled = false;
+          nextBtn.textContent = current === slides.length - 1 ? 'Clase 3' : 'Siguiente';
         }
 
         prevBtn.addEventListener('click', () => {
@@ -51,6 +51,10 @@
         });
 
         nextBtn.addEventListener('click', () => {
+          if (current === slides.length - 1) {
+            window.location.href = 'cx3.html';
+            return;
+          }
           current = Math.min(slides.length - 1, current + 1);
           render();
         });
@@ -455,7 +459,8 @@
                 <p>
                   Datos de uso.
                 </p>
-              </article>             
+              </article>  
+              <p></p>
             </div>
 
             <section class="modal-section highlight-blue">
@@ -577,6 +582,146 @@
             </section>
           `
         },
+        {
+          title: 'Actividad',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_ActividadVoC.png" alt="La voz de cliente - actividad" />
+            </div>
+          `
+        },
+      {
+          title: 'Solución de la actividad',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_solucionVoC.png" alt="La voz de cliente - actividad" />
+            </div>
+          `
+        },
+        {
+          title: 'Capturar feedback no es interrogar al cliente',
+          html: `
+            <section class="modal-section">
+              <h3>La pregunta correcta mejora la respuesta</h3>
+              <p>
+                Una mala encuesta se siente como trámite. Una buena encuesta se siente como conversación.
+              </p>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Ejemplo frío</h3>
+                <p class="example-text">
+                  “Complete la siguiente encuesta de satisfacción”.
+                </p>
+              </article>
+
+              <article class="modal-section">
+                <h3>Ejemplo conversacional</h3>
+                <p class="example-text">
+                  “Queremos mejorar tu próxima experiencia. Te tomará menos de 2 minutos”.
+                </p>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <h3>Punto clave</h3>
+              <p>
+                La calidad del insight depende de la calidad de la pregunta.
+              </p>
+            </section>
+
+            <section class="modal-section">
+              <h3>Carga cognitiva</h3>
+              <p>
+                Es el esfuerzo mental que le pedimos al usuario.
+              </p>
+              <p>
+                A mayor esfuerzo, menor tasa de respuesta y menor calidad.
+              </p>
+            </section>
+
+            <section class="modal-section">
+              <h3>Buenas prácticas</h3>
+              <ul>
+                <li>Preguntar una cosa por vez.
+                <li>Usar lenguaje humano.
+                <li>Evitar formularios largos.
+                <li>No pedir datos que ya tenemos.
+                <li>Probar siempre en móvil.
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Pregunta</h3>
+              <p>
+                ¿Qué hace que una encuesta dé ganas de cerrarla apenas empieza?
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'Logic Jumps y personalización',
+          html: `
+            <section class="modal-section">
+              <h3>Que el formulario escuche de verdad</h3>
+              <p>
+                <strong>Logic Jumps</strong>
+              </p>
+              <p>
+                Son saltos condicionales que adaptan el formulario según la respuesta del usuario.
+              </p>
+              <p class="example-text">
+                Ejemplo:
+              </p>
+              <ul>
+                <li>Si el cliente responde 1 a 4: “Lamentamos que tu experiencia no haya sido buena. ¿Qué fue lo que más falló?”
+                <li>Si responde 5 a 7: “¿Qué podríamos mejorar para que tu experiencia sea excelente?”
+                <li>Si responde 8 a 10: “¿Qué fue lo que más valoraste?”
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Punto clave</h3>
+              <p>
+                Un buen formulario no trata igual a todos los clientes.
+              </p>
+            </section>
+
+            <section class="modal-section">
+              <h3>Beneficio</h3>
+              <ul>
+                <li>Reduce fricción.
+                <li>Mejora relevancia.
+                <li>Aumenta calidad de respuesta.
+                <li>Permite accionar más rápido.
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Pregunta</h3>
+              <p>
+                ¿Qué salto lógico diseñarías para un cliente que dice que no volvería a comprar?
+              </p>
+            </section>
+          `
+        },
+        {
+          title: ' ',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_datos.png" alt="Datos" />
+            </div>
+          `
+        },
+                {
+          title: 'Cierre de la clase 2 ',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_cierreclase2.png" alt="Datos" />
+            </div>
+          `
+        }
       ];
 
       initSlider(

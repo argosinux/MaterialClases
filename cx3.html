@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase 3 - Customer Journey y momentos de verdad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="secondary-page">
+    <main class="page-shell">
+      <section class="page-card">
+        <p class="eyebrow">Clase 3 - Customer Journey y momentos de verdad</p>
+
+        <div class="slider-shell">
+          <h2 id="slideTitle"></h2>
+          <div id="slideContent" class="slide-content"></div>
+          <div class="slider-nav">
+            <button class="section-action-btn" id="prevSlideBtn" type="button" hidden>Anterior</button>
+            <button class="section-action-btn" id="nextSlideBtn" type="button">Siguiente</button>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <a class="back-link" href="customerexperience.html">← Volver a clases</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      function initSlider(titleEl, contentEl, prevBtn, nextBtn, slides) {
+        let current = 0;
+
+        function render() {
+          const slide = slides[current];
+          titleEl.textContent = slide.title;
+          contentEl.innerHTML = slide.html;
+          prevBtn.hidden = current === 0;
+          nextBtn.disabled = current === slides.length - 1;
+          nextBtn.textContent = current === slides.length - 1 ? 'Final' : 'Siguiente';
+        }
+
+        prevBtn.addEventListener('click', () => {
+          current = Math.max(0, current - 1);
+          render();
+        });
+
+        nextBtn.addEventListener('click', () => {
+          current = Math.min(slides.length - 1, current + 1);
+          render();
+        });
+
+        render();
+      }
+
+      const slides = [
+        {
+          title: 'Resumen - Journey Customer',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_resumenjourney.png" alt="Resumen - Journey Customer" />
+            </div>
+          `
+        },
+                {
+          title: 'Ejemplo - Journey Customer',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_ejemplojourney.png" alt="Ejemplo - Journey Customer" />
+            </div>
+          `
+        },
+       {
+          title: '¿Para qué? - Journey Customer',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_paraque.png" alt="Para qué - Journey Customer" />
+            </div>
+          `
+        },
+        {
+          title: 'Cinco pilares - Journey Customer',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_cincopilares.png" alt="Cinco pilares - Journey Customer" />
+            </div>
+          `
+        },
+        {
+          title: 'Pain point vs. momento de verdad',
+          html: `
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Pain point</h3>
+                <p>
+                  Es una fricción puntual. Puede molestar, demorar o frustrar.
+                </p>
+              </article>
+
+              <article class="modal-section">
+                <h3>Momento de verdad</h3>
+                <p>
+                  Es un punto de alta carga emocional o decisional. Puede cambiar la relación con la marca.
+                </p>
+              </article>
+            </div>
+
+            <section class="modal-section">
+              <h3>Ejemplo ampliado</h3>
+              <p>
+                En una aerolínea:
+              </p>
+              <p>
+                <strong>Pain point:</strong> la app tarda en cargar el boarding pass.
+              </p>
+              <p>
+                <strong>Momento de verdad:</strong> el cliente está en la fila, faltan 10 minutos para cerrar el embarque y no puede mostrar su boarding pass.
+              </p>
+              <p class="example-text">
+                La misma falla técnica se convierte en momento de verdad cuando aparece urgencia, riesgo y emoción.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Punto clave</h3>
+              <p>
+                No todo pain point es un momento de verdad.
+              </p>
+              <p>
+                Pero todo momento de verdad mal gestionado puede convertirse en pérdida de confianza.
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'La línea emocional como evidencia del viaje',
+          html: `
+            <section class="modal-section">
+              <p>
+                La emoción no debe ponerse “a ojo”. Debe inferirse desde evidencia:
+              </p>
+              <ul>
+                <li>Comentarios de clientes.
+                <li>Reclamos.
+                <li>Entrevistas.
+                <li>Tiempo de espera.
+                <li>Abandono en una etapa.
+                <li>Repetición de consultas.
+                <li>Reseñas negativas.
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Punto clave</h3>
+              <p>
+                La línea emocional no es arte abstracto. Es una hipótesis visual basada en señales.
+              </p>
+            </section>
+
+            <section class="modal-section">
+              <h3>Ejemplo para explicar</h3>
+              <p>
+                Si muchos usuarios abandonan al cargar documentación, escriben a soporte y dejan comentarios como “no sé si esto está bien”, la emoción probable no es “neutral”. Es ansiedad o inseguridad.
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'Por qué el Journey Map debe ser colaborativo',
+          html: `
+            <section class="modal-section">
+              <h3>Silos organizacionales</h3>
+              <p>
+                El cliente vive una sola experiencia, pero la empresa suele operar por silos. Marketing, Producto, Operaciones, Soporte y Finanzas pueden tener objetivos distintos, métricas distintas y hasta versiones distintas de “lo que pasa”.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Punto clave</h3>
+              <p>
+                El Journey Map colaborativo no busca que todos opinen. Busca que todos vean el mismo viaje.
+              </p>
+            </section>
+
+            <section class="modal-section">
+              <h3>Ejemplo</h3>
+              <ul>
+                <li>Marketing cree que el problema está en la landing.
+                <li>Ventas cree que el problema es el precio.
+                <li>Soporte sabe que la mayor queja es el acceso posterior a la compra.
+                <li>Operaciones sabe que hay demoras en activación.
+              </ul>
+            </section>
+          `
+        },
+        {
+          title: 'Miro como tablero de diagnóstico, no como mural bonito',
+          html: `
+            <section class="modal-section">
+              <p>
+                La herramienta tiene que organizar el pensamiento. Por eso conviene dividir el tablero en cinco zonas:
+              </p>
+              <ul>
+                <li><strong>1. Contexto.</strong> Buyer Persona, objetivo del viaje y escenario.
+                <li><strong>2. Journey Map.</strong> Etapas, acciones, touchpoints, emociones, pain points y momentos de verdad.
+                <li><strong>3. Evidencias.</strong> Capturas, citas, métricas, reseñas, tickets, resultados de encuestas.
+                <li><strong>4. Dudas abiertas.</strong> Lo que todavía debe investigarse.
+                <li><strong>5. Priorización.</strong> Fricciones candidatas para trabajar.
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Punto clave</h3>
+              <p>
+                Si el tablero no permite tomar decisiones, es diseño de interiores digital. Muy lindo, pero no paga la cuenta.
+              </p>
+            </section>
+          `
+        },
+      ];
+
+      initSlider(
+        document.getElementById('slideTitle'),
+        document.getElementById('slideContent'),
+        document.getElementById('prevSlideBtn'),
+        document.getElementById('nextSlideBtn'),
+        slides
+      );
+    </script>
+  </body>
+</html>
