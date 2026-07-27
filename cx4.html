@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase 4 - Diseño de servicios y omnicanalidad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="secondary-page">
+    <main class="page-shell">
+      <section class="page-card">
+        <p class="eyebrow">Clase 4 - Diseño de servicios y omnicanalidad</p>
+
+        <div class="slider-shell">
+          <h2 id="slideTitle"></h2>
+          <div id="slideContent" class="slide-content"></div>
+          <div class="slider-nav">
+            <button class="section-action-btn" id="prevSlideBtn" type="button" hidden>Anterior</button>
+            <button class="section-action-btn" id="nextSlideBtn" type="button">Siguiente</button>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <a class="back-link" href="customerexperience.html">← Volver a clases</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      function initSlider(titleEl, contentEl, prevBtn, nextBtn, slides) {
+        let current = 0;
+
+        function render() {
+          const slide = slides[current];
+          titleEl.textContent = slide.title;
+          contentEl.innerHTML = slide.html;
+          prevBtn.hidden = current === 0;
+          nextBtn.disabled = current === slides.length - 1;
+          nextBtn.textContent = current === slides.length - 1 ? 'Final' : 'Siguiente';
+        }
+
+        prevBtn.addEventListener('click', () => {
+          current = Math.max(0, current - 1);
+          render();
+        });
+
+        nextBtn.addEventListener('click', () => {
+          current = Math.min(slides.length - 1, current + 1);
+          render();
+        });
+
+        render();
+      }
+
+      const slides = [
+        {
+          title: 'La experiencia visible depende de una operación invisible',
+          html: `
+            <section class="modal-section">
+              <p>
+                Laura no sigue pagando solo por el café. Sigue pagando porque la caja llega a tiempo, el mensaje aparece cuando corresponde y todo parece estar bajo control.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Idea central</h3>
+              <p>
+                CX no es solo diseñar lo que el cliente ve. Es diseñar lo que la empresa debe coordinar para que eso ocurra.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Pregunta generadora</h3>
+              <p>
+                ¿Alguna vez repitieron su problema tres veces a tres personas distintas de la misma empresa?
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'Service Design',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_servicedesign.png" alt="Service Design" />
+            </div>
+          `
+        },
+        {
+          title: 'De Customer Journey a Service Design',
+          html: `
+            <section class="modal-section">
+              <p>
+                El Journey muestra la película del cliente. Service Design muestra cómo se filma.
+              </p>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Customer Journey responde:</h3>
+                <p>
+                  ¿Qué vive el cliente?
+                </p>
+              </article>
+
+              <article class="modal-section">
+                <h3>Service Design responde:</h3>
+                <p>
+                  ¿Qué debe pasar dentro de la empresa para que eso sea posible?
+                </p>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <h3>Ejemplo café</h3>
+              <p>
+                El cliente ve una caja linda.
+              </p>
+              <p>
+                La empresa necesita stock, picking, etiqueta, courier, CRM y mensaje automático.
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'Evidencia de servicio',
+          html: `
+            <section class="modal-section">
+              <h3>Lo tangible tranquiliza cuando el servicio es invisible</h3>
+              <p>
+                En servicios, muchas cosas no se pueden tocar: una entrega, una reserva, una consulta médica, una suscripción. Por eso la evidencia física o digital ayuda a reducir incertidumbre.
+              </p>
+            </section>
+
+            <section class="modal-section">
+              <h3>Ejemplos</h3>
+              <ul>
+                <li>“Tu pedido fue despachado.”
+                <li>Número de seguimiento.
+                <li>Ticket de reclamo.
+                <li>Foto del paquete entregado.
+                <li>Mail de confirmación.
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p>
+                La evidencia no es decoración. Es prueba de que el sistema sigue vivo.
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'Service Design',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_front.png" alt="Service Design" />
+            </div>
+          `
+        },
+      ];
+
+      initSlider(
+        document.getElementById('slideTitle'),
+        document.getElementById('slideContent'),
+        document.getElementById('prevSlideBtn'),
+        document.getElementById('nextSlideBtn'),
+        slides
+      );
+    </script>
+  </body>
+</html>
