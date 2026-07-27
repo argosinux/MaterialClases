@@ -127,6 +127,14 @@
             </section>
           `
         },
+     {
+          title: 'Service Design',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_front.png" alt="Service Design" />
+            </div>
+          `
+        },
         {
           title: 'Evidencia de servicio',
           html: `
@@ -156,13 +164,167 @@
           `
         },
         {
-          title: 'Service Design',
+          title: 'Backstage vs. Procesos de soporte',
+          html: `
+            <section class="modal-section">
+              <p>
+                No todo lo invisible es igual. Detrás del frontstage hay capas distintas, cada una a mayor distancia del cliente.
+              </p>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Backstage</h3>
+                <p>
+                  Personas y acciones que están directamente conectadas con lo que el cliente vive, aunque él no las vea.
+                </p>
+                <p class="example-text">
+                  Ejemplo: el barista preparando el café, el agente armando la respuesta antes de enviarla, el picking de un pedido.
+                </p>
+              </article>
+
+              <article class="modal-section">
+                <h3>Procesos de soporte</h3>
+                <p>
+                  Sistemas, herramientas y áreas que permiten que el backstage funcione, sin relación directa con un cliente en particular.
+                </p>
+                <p class="example-text">
+                  Ejemplo: el sistema de inventario, el servidor del CRM, la capacitación del equipo, las políticas de RRHH.
+                </p>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <h3>Punto clave</h3>
+              <p>
+                Si falla el backstage, el cliente lo nota casi de inmediato. Si falla un proceso de soporte, el cliente lo nota igual, pero más tarde: primero se cae el backstage, y recién ahí se ve en el frontstage.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Pregunta</h3>
+              <p>
+                Si el CRM se cae por una hora, ¿qué le pasa al cliente aunque nadie del backstage haya cometido un error?
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'El Service Blueprint',
+          html: `
+            <section class="modal-section">
+              <h3>La radiografía del servicio</h3>
+              <p>
+                El Service Blueprint permite visualizar la relación entre acciones del cliente, interacciones visibles, acciones internas y procesos de soporte.
+              </p>
+              <p>
+                El concepto viene de Lynn Shostack, quien en 1984 planteó que muchos problemas de servicio nacen por falta de diseño y control sistemático.
+              </p>
+            </section>
+
+            <section class="modal-section">
+              <h3>Capas clave</h3>
+              <ul>
+                <li><strong>Evidencia física/digital.</strong> Las señales tangibles que percibe el cliente y que le confirman que el servicio está ocurriendo: un mensaje, un ticket, una foto de entrega.
+                <li><strong>Acciones del cliente.</strong> Los pasos que el cliente realiza por su cuenta: buscar, comparar, pagar, reclamar, usar el producto.
+                <li><strong>Frontstage.</strong> Las interacciones visibles entre el cliente y la empresa: personas, pantallas, canales de atención.
+                <li><strong>Backstage.</strong> Las acciones internas directamente conectadas con lo que el cliente vive, aunque no las vea.
+                <li><strong>Procesos de soporte.</strong> Los sistemas y áreas que permiten que el backstage funcione: inventario, CRM, capacitación, políticas internas.
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Punto clave</h3>
+              <p>
+                El Blueprint no describe cómo se ve el servicio. Describe cómo se sostiene: qué capa depende de cuál, y dónde se rompe la cadena cuando algo falla.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Pregunta</h3>
+              <p>
+                Si dibujaran el Blueprint de un servicio que usan seguido, ¿en qué capa creen que está el mayor riesgo de falla?
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'Las tres líneas del Blueprint',
+          html: `
+            <section class="modal-section">
+              <h3>Dónde se ve, dónde se oculta, dónde se coordina</h3>
+              <p>
+                El Blueprint no es solo una lista de capas: son capas separadas por líneas. Cada línea marca un cambio de responsable, y es justo ahí donde suele nacer la fricción.
+              </p>
+            </section>
+
+            <div class="evolution-grid">
+              <article class="evolution-card">
+                <h3>Línea de interacción</h3>
+                <p>
+                  Separa al cliente de la empresa. Arriba está lo que el cliente hace por su cuenta; debajo, lo que la empresa responde.
+                </p>
+                <p class="example-text">
+                  Ejemplo: el cliente hace clic en “comprar” (arriba). El sistema confirma el pago (debajo).
+                </p>
+              </article>
+
+              <article class="evolution-card">
+                <h3>Línea de visibilidad</h3>
+                <p>
+                  Separa lo visible de lo invisible: el frontstage del backstage. Arriba, lo que el cliente puede ver; debajo, lo que ocurre sin que lo perciba.
+                </p>
+                <p class="example-text">
+                  Ejemplo: el cliente ve al mesero tomar el pedido (frontstage). No ve al cocinero prepararlo (backstage).
+                </p>
+              </article>
+
+              <article class="evolution-card">
+                <h3>Línea de interacción interna</h3>
+                <p>
+                  Separa el backstage de los procesos de soporte. Arriba, quienes ejecutan el servicio en tiempo real; debajo, los sistemas y áreas que lo hacen posible.
+                </p>
+                <p class="example-text">
+                  Ejemplo: el agente responde un reclamo (backstage) apoyado en el CRM y una base de conocimiento (soporte interno).
+                </p>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <h3>Punto clave</h3>
+              <p>
+                Cada línea es un punto de posible fricción. Cuando un cliente termina haciendo el trabajo de la empresa, se cruzó mal la línea de interacción. Cuando se queda sin información y genera ansiedad, se gestionó mal la línea de visibilidad. Cuando el backstage no puede sostener lo que promete, falló algo bajo la línea de interacción interna.
+              </p>
+              <p>
+                Diagnosticar un problema de CX es, muchas veces, preguntar en qué línea se rompió la cadena.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Pregunta</h3>
+              <p>
+                La próxima vez que un cliente reciba una respuesta contradictoria de dos personas distintas de la misma empresa, ¿en qué línea del Blueprint ubicarían el problema?
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'Service Blueprint',
           html: `
             <div class="image-slide">
-              <img src="img/CX_front.png" alt="Service Design" />
+              <img src="img/CX_serviceblue.png" alt="Service Service Blue" />
             </div>
           `
         },
+       {
+          title: 'Service Blueprint',
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_laurablue.png" alt="Service Service Blue" />
+            </div>
+          `
+        },
+
       ];
 
       initSlider(
