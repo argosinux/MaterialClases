@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos - Scrum</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="secondary-page">
+    <main class="page-shell">
+      <section class="page-card">
+        <p class="eyebrow">Clase 3</p>
+        <h1>Eventos - Scrum</h1>
+
+        <div class="slider-shell">
+          <h2 id="slideTitle"></h2>
+          <div id="slideContent" class="slide-content"></div>
+          <div class="slider-nav">
+            <button class="section-action-btn" id="prevSlideBtn" type="button" hidden>Anterior</button>
+            <button class="section-action-btn" id="nextSlideBtn" type="button">Siguiente</button>
+            <button class="section-action-btn" id="activityBtn" type="button" hidden>Actividad</button>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <a class="back-link" href="metodologias-agiles.html">← Volver a clases</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const slideTitle = document.getElementById('slideTitle');
+      const slideContent = document.getElementById('slideContent');
+      const prevSlideBtn = document.getElementById('prevSlideBtn');
+      const nextSlideBtn = document.getElementById('nextSlideBtn');
+      const activityBtn = document.getElementById('activityBtn');
+      let currentSlide = 0;
+
+      const slides = [
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/ma_backlog1.png" alt="Imagen ma_backlog1.png" />
+            </div>
+          `
+        },
+        {
+          title: '¿Qué es el Product Backlog?',
+          html: `
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>El Product Backlog es:</h3>
+                <ul>
+                  <li>Una lista emergente y ordenada de lo necesario para mejorar el producto</li>
+                  <li>La fuente de trabajo realizada por el Scrum Team</li>
+                  <li>Un artefacto que evoluciona a medida que se aprende</li>
+                  <li>El espacio donde se hacen visibles necesidades, oportunidades y problemas</li>
+                </ul>
+              </article>
+
+              <article class="modal-section">
+                <h3>El Product Backlog NO es:</h3>
+                <ul>
+                  <li>Un contrato cerrado</li>
+                  <li>Una lista infinita de pedidos</li>
+                  <li>Un cronograma detallado de todo el proyecto</li>
+                  <li>El depósito donde descansan ideas olvidadas</li>
+                </ul>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <h3>Punto clave</h3>
+              <p>
+                El backlog representa lo que hoy creemos que conviene hacer, no una promesa eterna.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Concepto</h3>
+              <p>
+                La Guía Scrum define el Product Backlog como una lista emergente y ordenada de lo necesario para mejorar el producto. También establece que es la única fuente del trabajo realizado por el Scrum Team.
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'Backlog vivo vs. backlog estático',
+          html: `
+            <table class="priority-matrix">
+              <thead>
+                <tr>
+                  <th>Backlog vivo</th>
+                  <th>Backlog estático</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cambia con el aprendizaje</td>
+                  <td>Conserva requisitos antiguos</td>
+                </tr>
+                <tr>
+                  <td>Se ordena con frecuencia</td>
+                  <td>Acumula ítems sin revisar</td>
+                </tr>
+                <tr>
+                  <td>Incorpora feedback</td>
+                  <td>Sigue un plan aunque pierda sentido</td>
+                </tr>
+                <tr>
+                  <td>Elimina trabajo sin valor</td>
+                  <td>Confunde antigüedad con prioridad</td>
+                </tr>
+                <tr>
+                  <td>Mira el próximo objetivo</td>
+                  <td>Intenta predecir todo el proyecto</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <section class="modal-section highlight-blue">
+              <h3>Idea clave</h3>
+              <p>Un backlog cambia cuando aparecen:</p>
+              <ul>
+                <li>Nuevas evidencias de usuarios</li>
+                <li>Cambios regulatorios</li>
+                <li>Resultados de un Incremento</li>
+                <li>Riesgos técnicos</li>
+                <li>Movimientos del mercado</li>
+                <li>Nuevas restricciones de capacidad</li>
+              </ul>
+            </section>
+
+            <section class="modal-section">
+              <h3>Mensaje central</h3>
+              <p>
+                Un backlog que nunca cambia probablemente no está aprendiendo.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Pregunta generadora</h3>
+              <p>
+                ¿Cuándo fue la última vez que una evidencia hizo cambiar el orden de su backlog?
+              </p>
+            </section>
+          `
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/ma_backlog2.png" alt="Imagen ma_backlog2.png" />
+            </div>
+          `
+        }
+      ];
+
+      function renderSlide() {
+        const slide = slides[currentSlide];
+        slideTitle.textContent = slide.title || '';
+        slideContent.innerHTML = slide.html;
+        prevSlideBtn.hidden = currentSlide === 0;
+        nextSlideBtn.disabled = currentSlide === slides.length - 1;
+        nextSlideBtn.textContent = currentSlide === slides.length - 1 ? 'Final' : 'Siguiente';
+        activityBtn.hidden = currentSlide !== slides.length - 1;
+      }
+
+      prevSlideBtn.addEventListener('click', () => {
+        currentSlide = Math.max(0, currentSlide - 1);
+        renderSlide();
+      });
+
+      nextSlideBtn.addEventListener('click', () => {
+        currentSlide = Math.min(slides.length - 1, currentSlide + 1);
+        renderSlide();
+      });
+
+      activityBtn.addEventListener('click', () => {
+        window.location.href = 'https://miro.com/app/board/uXjVH6syhgc=/';
+      });
+
+      renderSlide();
+    </script>
+  </body>
+</html>
