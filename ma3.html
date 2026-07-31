@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eventos - Scrum</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -548,6 +547,482 @@
                 Los criterios convierten expectativas ambiguas en comportamientos verificables.
               </p>
             </section>
+          `
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/ma_historia4.png" alt="Imagen ma_historia3.png" />
+            </div>
+          `
+        },
+        {
+          title: 'Ejemplo completo',
+          html: `
+            <section class="modal-section highlight-quote">
+              <h3>Historia</h3>
+              <p>
+                Como empleado, quiero solicitar vacaciones desde la aplicación para obtener la aprobación de mi responsable sin intercambiar correos.
+              </p>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Criterios de Aceptación</h3>
+                <ul>
+                  <li>Solo se seleccionan fechas futuras</li>
+                  <li>Se muestran los días disponibles</li>
+                  <li>No se permiten períodos superiores al saldo</li>
+                  <li>El responsable recibe una notificación</li>
+                  <li>El empleado puede consultar el estado</li>
+                </ul>
+              </article>
+
+              <article class="modal-section">
+                <h3>Definition of Done</h3>
+                <ul>
+                  <li>Revisión de código completada</li>
+                  <li>Pruebas automáticas aprobadas</li>
+                  <li>Accesibilidad verificada</li>
+                  <li>Seguridad validada</li>
+                  <li>Documentación actualizada</li>
+                  <li>Integración desplegada según el proceso acordado</li>
+                </ul>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <h3>Mensaje central</h3>
+              <p>
+                La historia explica el valor, los criterios delimitan el comportamiento y la DoD establece la calidad.
+              </p>
+            </section>
+          `
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/ma_priorizar.png" alt="Imagen ma_priorizar.png" />
+            </div>
+          `
+        },
+        {
+          title: 'Priorizar no es ordenar preferencias',
+          html: `
+            <section class="modal-section">
+              <h3>Priorizar significa comparar alternativas considerando:</h3>
+              <ul>
+                <li>Valor esperado</li>
+                <li>Impacto</li>
+                <li>Alcance</li>
+                <li>Urgencia</li>
+                <li>Riesgo</li>
+                <li>Evidencia</li>
+                <li>Confianza</li>
+                <li>Esfuerzo</li>
+                <li>Dependencias</li>
+                <li>Alineación con el Product Goal</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Una priorización útil debe responder</h3>
+              <ul>
+                <li>¿Qué problema estamos intentando resolver?</li>
+                <li>¿Para quién?</li>
+                <li>¿Qué evidencia tenemos?</li>
+                <li>¿Qué ocurre si no lo hacemos ahora?</li>
+                <li>¿Qué alternativa dejamos de realizar?</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Mensaje central</h3>
+              <p>
+                Toda prioridad consume capacidad y genera un costo de oportunidad.
+              </p>
+            </section>
+          `
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/ma_priorizar2.png" alt="Imagen ma_priorizar2.png" />
+            </div>
+          `
+        },
+        {
+          title: 'La prueba del verdadero Must',
+          html: `
+            <section class="modal-section">
+              <h3>Para considerar un ítem como Must Have, pregunten:</h3>
+              <ul>
+                <li>¿La solución sería insegura sin esto?</li>
+                <li>¿Incumpliríamos una regulación?</li>
+                <li>¿El producto dejaría de ser viable?</li>
+                <li>¿No existiría ninguna alternativa temporal?</li>
+                <li>¿El objetivo del período se volvería inalcanzable?</li>
+              </ul>
+              <p>
+                Si la respuesta es "no", probablemente sea un Should.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Regla orientativa DSDM</h3>
+              <p>
+                Los Must Have no deberían consumir toda la capacidad prevista. DSDM propone que representen aproximadamente un máximo del 60% del esfuerzo, reservando margen para Should y Could y para gestionar incertidumbre.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Mensaje central</h3>
+              <p>
+                Si todo es Must, MoSCoW se convierte en una reunión donde todos gritan en inglés.
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'Matriz Valor vs. Esfuerzo',
+          html: `
+            <table class="priority-matrix">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Esfuerzo bajo</th>
+                  <th>Esfuerzo alto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Valor alto</th>
+                  <td><strong>Quick Wins</strong></td>
+                  <td><strong>Big Bets</strong></td>
+                </tr>
+                <tr>
+                  <th>Valor bajo</th>
+                  <td><strong>Fill-ins</strong></td>
+                  <td><strong>Money Pits</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Quick Wins</h3>
+                <p>Alto valor y bajo esfuerzo.</p>
+                <p><strong>Acción:</strong> ejecutar pronto.</p>
+              </article>
+
+              <article class="modal-section">
+                <h3>Big Bets</h3>
+                <p>Alto valor y alto esfuerzo.</p>
+                <p><strong>Acción:</strong> validar, dividir y planificar.</p>
+              </article>
+
+              <article class="modal-section">
+                <h3>Fill-ins</h3>
+                <p>Bajo valor y bajo esfuerzo.</p>
+                <p><strong>Acción:</strong> realizar solo cuando exista capacidad justificada.</p>
+              </article>
+
+              <article class="modal-section">
+                <h3>Money Pits</h3>
+                <p>Bajo valor y alto esfuerzo.</p>
+                <p><strong>Acción:</strong> eliminar, reformular o posponer.</p>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <h3>Mensaje central</h3>
+              <p>
+                La matriz no decide automáticamente: hace visible la conversación estratégica.
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'El valor y el esfuerzo necesitan contexto',
+          html: `
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Valor puede significar</h3>
+                <ul>
+                  <li>Ingresos</li>
+                  <li>Adopción</li>
+                  <li>Retención</li>
+                  <li>Reducción de errores</li>
+                  <li>Cumplimiento</li>
+                  <li>Menor costo operativo</li>
+                  <li>Reducción del riesgo</li>
+                  <li>Aprendizaje estratégico</li>
+                </ul>
+              </article>
+
+              <article class="modal-section">
+                <h3>Esfuerzo puede incluir</h3>
+                <ul>
+                  <li>Desarrollo</li>
+                  <li>Diseño</li>
+                  <li>Pruebas</li>
+                  <li>Coordinación</li>
+                  <li>Migración</li>
+                  <li>Capacitación</li>
+                  <li>Operación</li>
+                  <li>Mantenimiento futuro</li>
+                </ul>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <h3>Advertencia</h3>
+              <p>
+                Un ítem "fácil de programar" puede ser costoso de operar durante años.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Mensaje central</h3>
+              <p>
+                No comparen valor y esfuerzo hasta acordar qué significan ambos ejes.
+              </p>
+            </section>
+          `
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/ma_priorizar3.png" alt="Imagen ma_priorizar3.png" />
+            </div>
+          `
+        },
+        {
+          title: 'Ejemplo RICE',
+          html: `
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Idea A — Notificaciones personalizadas</h3>
+                <ul>
+                  <li>Reach: 8.000</li>
+                  <li>Impact: 2</li>
+                  <li>Confidence: 80%</li>
+                  <li>Effort: 3</li>
+                </ul>
+                <p>RICE = (8.000 × 2 × 0,8) ÷ 3</p>
+                <p><strong>Resultado aproximado: 4.267</strong></p>
+              </article>
+
+              <article class="modal-section">
+                <h3>Idea B — Rediseño completo del onboarding</h3>
+                <ul>
+                  <li>Reach: 15.000</li>
+                  <li>Impact: 1</li>
+                  <li>Confidence: 50%</li>
+                  <li>Effort: 6</li>
+                </ul>
+                <p>RICE = (15.000 × 1 × 0,5) ÷ 6</p>
+                <p><strong>Resultado: 1.250</strong></p>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <h3>Interpretación</h3>
+              <p>La Idea A alcanza menos usuarios, pero:</p>
+              <ul>
+                <li>Tiene mayor impacto estimado</li>
+                <li>Cuenta con mayor confianza</li>
+                <li>Requiere la mitad del esfuerzo</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Mensaje central</h3>
+              <p>
+                Una idea grande no es necesariamente una gran prioridad.
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'RICE no es una calculadora de la verdad',
+          html: `
+            <section class="modal-section">
+              <h3>RICE puede producir falsa precisión cuando:</h3>
+              <ul>
+                <li>El Reach es inventado</li>
+                <li>El Impact refleja opiniones</li>
+                <li>Todos colocan 100% de Confidence</li>
+                <li>El Effort excluye costos operativos</li>
+                <li>Se comparan períodos diferentes</li>
+                <li>Se manipulan valores para justificar una decisión previa</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Buenas prácticas</h3>
+              <ul>
+                <li>Documentar la fuente de cada dato</li>
+                <li>Usar la misma escala</li>
+                <li>Revisar resultados después de entregar</li>
+                <li>Actualizar puntajes cuando cambia la evidencia</li>
+                <li>Analizar sensibilidad: ¿cambia la decisión si una variable varía?</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Mensaje central</h3>
+              <p>
+                Un decimal no convierte una opinión en evidencia.
+              </p>
+            </section>
+          `
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/ma_hipo.png" alt="Imagen ma_hipo.png" />
+            </div>
+          `
+        },
+        {
+          title: 'Estimar no es adivinar el futuro',
+          html: `
+            <section class="modal-section">
+              <h3>La estimación sirve para:</h3>
+              <ul>
+                <li>Comprender el trabajo</li>
+                <li>Detectar incertidumbre</li>
+                <li>Identificar riesgos</li>
+                <li>Conversar sobre dependencias</li>
+                <li>Evaluar capacidad</li>
+                <li>Tomar decisiones de alcance</li>
+                <li>Construir previsibilidad gradualmente</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>No sirve para</h3>
+              <ul>
+                <li>Prometer exactitud absoluta</li>
+                <li>Controlar cuánto trabaja cada persona</li>
+                <li>Medir desempeño individual</li>
+                <li>Comparar equipos</li>
+                <li>Convertir incertidumbre en una fecha políticamente cómoda</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Mensaje central</h3>
+              <p>
+                Estimar no elimina la incertidumbre. La hace visible para poder gestionarla.
+              </p>
+            </section>
+          `
+        },
+        {
+          title: 'Story Points: estimación relativa',
+          html: `
+            <section class="modal-section">
+              <p>
+                Los Story Points expresan el tamaño relativo de un trabajo.
+              </p>
+              <h3>Pueden considerar:</h3>
+              <ul>
+                <li>Complejidad</li>
+                <li>Cantidad de trabajo</li>
+                <li>Riesgo</li>
+                <li>Incertidumbre</li>
+                <li>Dependencias</li>
+                <li>Falta de conocimiento</li>
+                <li>Dificultad de validación</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Ejemplo</h3>
+              <p>
+                Una modificación visual simple podría ser menor que una integración con:
+              </p>
+              <ul>
+                <li>Sistemas externos</li>
+                <li>Validaciones regulatorias</li>
+                <li>Datos incompletos</li>
+                <li>Dependencias de terceros</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Concepto</h3>
+              <p>
+                Agile Alliance identifica los Story Points como una unidad extendida de estimación y diferencia este enfoque de la estimación tradicional en horas-persona.
+              </p>
+            </section>
+
+            <section class="modal-section">
+              <h3>Mensaje central</h3>
+              <p>
+                Los puntos permiten comparar tamaños; no son horas con otro nombre.
+              </p>
+            </section>
+          `
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/ma_estimacion.png" alt="Imagen ma_estimacion.png" />
+            </div>
+          `
+        },
+        {
+          title: 'Estimación relativa',
+          html: `
+            <section class="modal-section">
+              <p>En lugar de preguntar:</p>
+              <blockquote class="manifesto-quote">
+                ¿Cuántas horas llevará?
+              </blockquote>
+              <p>El equipo compara:</p>
+              <ul>
+                <li>¿Es más grande o más pequeño que nuestra referencia?</li>
+                <li>¿Tiene más incertidumbre?</li>
+                <li>¿Incluye más dependencias?</li>
+                <li>¿Exige nuevos conocimientos?</li>
+                <li>¿Su validación es más compleja?</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Ejemplo de referencia</h3>
+              <p><strong>Historia base — 3 puntos</strong></p>
+              <p>Como usuario, quiero actualizar mi teléfono de contacto.</p>
+              <p><strong>Nueva historia:</strong></p>
+              <p>Como usuario, quiero validar mi identidad mediante un proveedor externo.</p>
+              <p>
+                La segunda probablemente será mayor por integración, seguridad, excepciones y dependencia externa.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Mensaje central</h3>
+              <p>
+                Las referencias históricas del propio equipo son más útiles que una tabla universal de equivalencias.
+              </p>
+            </section>
+          `
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/ma_estimacion2.png" alt="Imagen ma_estimacion2.png" />
+            </div>
+          `
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/ma_estimacion3.png" alt="Imagen ma_estimacion3.png" />
+            </div>
           `
         }
       ];
