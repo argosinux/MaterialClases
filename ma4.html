@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MVP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="secondary-page">
+    <main class="page-shell">
+      <section class="page-card">
+        <p class="eyebrow">Clase 4</p>
+
+        <div class="slider-shell">
+          <h2 id="slideTitle"></h2>
+          <div id="slideContent" class="slide-content"></div>
+          <div class="slider-nav">
+            <button class="section-action-btn" id="prevSlideBtn" type="button" hidden>Anterior</button>
+            <button class="section-action-btn" id="nextSlideBtn" type="button">Siguiente</button>
+            <button class="section-action-btn" id="activityBtn" type="button" hidden>Actividad</button>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <a class="back-link" href="metodologias-agiles.html">← Volver a clases</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const slideTitle = document.getElementById('slideTitle');
+      const slideContent = document.getElementById('slideContent');
+      const prevSlideBtn = document.getElementById('prevSlideBtn');
+      const nextSlideBtn = document.getElementById('nextSlideBtn');
+      const activityBtn = document.getElementById('activityBtn');
+      let currentSlide = 0;
+
+      const slides = [
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_40.png" alt="Imagen MA_40.png" />
+            </div>
+          `
+        },
+        {
+          title: 'EFICIENCIA VS. EFICACIA',
+          html: `
+            <table class="priority-matrix">
+              <thead>
+                <tr>
+                  <th style="background: #fff; color: var(--orange);">Eficiencia</th>
+                  <th>Eficacia</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Hacer bien el trabajo</td>
+                  <td>Hacer el trabajo correcto</td>
+                </tr>
+                <tr>
+                  <td>Reducir tiempos</td>
+                  <td>Generar resultados</td>
+                </tr>
+                <tr>
+                  <td>Mejorar productividad</td>
+                  <td>Resolver problemas relevantes</td>
+                </tr>
+                <tr>
+                  <td>Cumplir el plan</td>
+                  <td>Conseguir un cambio observable</td>
+                </tr>
+                <tr>
+                  <td>Entregar outputs</td>
+                  <td>Alcanzar outcomes</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <section class="modal-section highlight-blue">
+              <h3>Ejemplo</h3>
+              <p><strong>Equipo eficiente:</strong> entrega un chatbot en fecha.</p>
+              <p><strong>Equipo eficaz:</strong> reduce en 30% los contactos repetitivos con soporte.</p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Mensaje central</h3>
+              <p><strong>La velocidad solamente ayuda cuando la dirección es correcta.</strong></p>
+            </section>
+          `
+        }
+      ];
+
+      function renderSlide() {
+        const slide = slides[currentSlide];
+        slideTitle.textContent = slide.title || '';
+        slideContent.innerHTML = slide.html;
+        prevSlideBtn.hidden = currentSlide === 0;
+        nextSlideBtn.disabled = currentSlide === slides.length - 1;
+        nextSlideBtn.textContent = currentSlide === slides.length - 1 ? 'Final' : 'Siguiente';
+        activityBtn.hidden = true;
+      }
+
+      prevSlideBtn.addEventListener('click', () => {
+        currentSlide = Math.max(0, currentSlide - 1);
+        renderSlide();
+      });
+
+      nextSlideBtn.addEventListener('click', () => {
+        currentSlide = Math.min(slides.length - 1, currentSlide + 1);
+        renderSlide();
+      });
+
+      renderSlide();
+    </script>
+  </body>
+</html>
