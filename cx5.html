@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Videos de interés - Customer Experience</title>
+    <title>Clase 5 - Midiendo la experiencia del cliente</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,61 +15,186 @@
   <body class="secondary-page">
     <main class="page-shell">
       <section class="page-card">
-        <p class="eyebrow">Customer Experience</p>
-        <h1>Videos de interés</h1>
+        <p class="eyebrow">Clase 5 - Midiendo la experiencia del cliente</p>
 
-        <div class="video-grid">
-          <article class="card video-card">
-            <h2>Customer Experience | Yassmin Shahin </h2>
-            <p>Explora el rol del customer experience en la creación de relaciones duraderas.</p>
-            <div class="video-embed">
-              <iframe
-                src="https://www.youtube.com/embed/r5eWqS_mzfY"
-                title="¿Qué es Customer Experience?"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </article>
-
-          <article class="card video-card">
-            <h2>The Power of Personalization in the Age of AI | Mark Abraham | TED</h2>
-            <p>Mark Abraham destaca una mentalidad clave que puede ayudar a las empresas a impulsar su crecimiento (y deleitar a sus clientes) en la era de la IA.</p>
-            <div class="video-embed">
-              <iframe
-                src="https://www.youtube.com/embed/vNCVrtwrAWg"
-                title="Customer Journey Map explicado"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </article>
-
-          <article class="card video-card">
-            <h2> Entendiendo al cliente. User Experience y Psicología | Blanca B.</h2>
-            <p>En su charla, habla sobre cómo corregir y diseñar buenas experiencias en servicios y productos físicos según el User Experience y la psicología</p>
-            <div class="video-embed">
-              <iframe
-                src="https://www.youtube.com/embed/WYbh60FijSM"
-                title="Service Design en la práctica"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </article>
-
-          <article class="card video-card">
-            <h2>The Secret to GREAT Customer Service | Simon Sinek</h2>
-            <p>Hay una diferencia entre ser educado y preocuparse de verdad. Un buen servicio al cliente requiere mucho más que simplemente ser cortés.</p>
-            <div class="video-embed">
-              <iframe
-                src="https://www.youtube.com/embed/7dQYLzW-7yU"
-                title="NPS, CSAT y CES: métricas de CX"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </article>
+        <div class="slider-shell">
+          <h2 id="slideTitle"></h2>
+          <div id="slideContent" class="slide-content"></div>
+          <div class="slider-nav">
+            <button class="section-action-btn" id="prevSlideBtn" type="button" hidden>Anterior</button>
+            <button class="section-action-btn" id="nextSlideBtn" type="button">Siguiente</button>
+          </div>
         </div>
 
-        <a class="back-link" href="customerexperience.html">← Volver a clases</a>
+        <div class="detail-actions">
+          <a class="back-link" href="customerexperience.html">← Volver a clases</a>
+        </div>
       </section>
     </main>
+
+    <script>
+      function initSlider(titleEl, contentEl, prevBtn, nextBtn, slides) {
+        let current = 0;
+
+        function render() {
+          const slide = slides[current];
+          titleEl.textContent = slide.title;
+          contentEl.innerHTML = slide.html;
+          prevBtn.hidden = current === 0;
+          nextBtn.disabled = current === slides.length - 1;
+          nextBtn.textContent = current === slides.length - 1 ? "Final" : "Siguiente";
+        }
+
+        prevBtn.addEventListener("click", () => {
+          current = Math.max(0, current - 1);
+          render();
+        });
+
+        nextBtn.addEventListener("click", () => {
+          current = Math.min(slides.length - 1, current + 1);
+          render();
+        });
+
+        render();
+      }
+
+      const slides = [
+        {
+          title: "MIDIENDO LA EXPERIENCIA DEL CLIENTE",
+          html: `
+            <section class="modal-section">
+              <p><strong>Lo que no medimos, lo interpretamos.</strong></p>
+              <p><strong>Lo que medimos mal, lo decidimos mal.</strong></p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>EXPERIENCIA → DATO → INSIGHT → DECISIÓN → RESULTADO</h3>
+            </section>
+
+            <section class="modal-section">
+              <h3>Durante las clases anteriores:</h3>
+              <ul>
+                <li>Entendimos al cliente.</li>
+                <li>Construimos el Customer Journey Map.</li>
+                <li>Identificamos momentos de verdad.</li>
+                <li>Diseñamos el Service Blueprint.</li>
+                <li>Detectamos fricciones.</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Ahora aparece una nueva pregunta:</h3>
+              <p>¿Cómo sabemos si la experiencia realmente está funcionando?</p>
+            </section>
+
+            <section class="modal-section">
+              <h3>Punto clave</h3>
+              <p>Medir CX no consiste en coleccionar encuestas.</p>
+              <p>Consiste en producir evidencia para decidir.</p>
+            </section>
+          `,
+        },
+        {
+          title: "La pregunta incómoda",
+          html: `
+            <section class="modal-section">
+              <p>Imaginen que pueden hacerle una sola pregunta a Laura.</p>
+              <p><strong>¿Cuál elegirían?</strong></p>
+            </section>
+
+            <section class="modal-section">
+              <h3>Ejemplos</h3>
+              <ul>
+                <li>¿Está satisfecha?</li>
+                <li>¿Nos recomendaría?</li>
+                <li>¿Fue fácil comprar?</li>
+                <li>¿Volvería a comprar?</li>
+                <li>¿Qué fue lo que más le molestó?</li>
+                <li>¿Renovará su suscripción?</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>¿Existe realmente “la única métrica que necesitamos”?</h3>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p>Dejar la pregunta abierta.</p>
+            </section>
+          `,
+        },
+        {
+          title: "Medir CX ≠ medir satisfacción",
+          html: `
+            <section class="modal-section">
+              <h3>La experiencia del cliente tiene varias dimensiones</h3>
+              <p>Una experiencia puede ser:</p>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>SATISFACTORIA</h3>
+                <p>“Me gustó el café.”</p>
+              </article>
+
+              <article class="modal-section">
+                <h3>FÁCIL</h3>
+                <p>“Pude cambiar mi suscripción en segundos.”</p>
+              </article>
+            </div>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>MEMORABLE</h3>
+                <p>“Me sorprendieron con una recomendación personalizada.”</p>
+              </article>
+
+              <article class="modal-section">
+                <h3>CONFIABLE</h3>
+                <p>“Siempre cumplen lo prometido.”</p>
+              </article>
+            </div>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>RECOMENDABLE</h3>
+                <p>“Se lo contaría a otra persona.”</p>
+              </article>
+
+              <article class="modal-section">
+                <h3>RENTABLE PARA EL NEGOCIO</h3>
+                <p>“Laura renueva, compra más y permanece.”</p>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <p>Por eso ninguna métrica individual explica toda la experiencia.</p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p>
+                Qualtrics también recomienda observar múltiples métricas porque CX tiene distintas dimensiones y una sola medida difícilmente proporciona la imagen completa.
+              </p>
+            </section>
+          `,
+        },
+        {
+          title: "Qualtrics",
+          html: `
+            <div class="image-slide">
+              <img src="img/qualtrics.png" alt="Qualtrics" />
+            </div>
+          `,
+        },
+      ];
+
+      initSlider(
+        document.getElementById("slideTitle"),
+        document.getElementById("slideContent"),
+        document.getElementById("prevSlideBtn"),
+        document.getElementById("nextSlideBtn"),
+        slides
+      );
+    </script>
   </body>
 </html>
