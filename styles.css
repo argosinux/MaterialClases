@@ -156,7 +156,8 @@ h1 {
 .card-button {
   display: inline-block;
   margin-top: 14px;
-  padding: 10px 16px;
+  padding: 8px 13px;
+  font-size: 0.8rem;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--orange), var(--amber));
   color: white;
