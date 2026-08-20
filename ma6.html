@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase 6</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="secondary-page">
+    <main class="page-shell">
+      <section class="page-card">
+        <p class="eyebrow">Clase 6</p>
+
+        <div class="slider-shell">
+          <h2 id="slideTitle"></h2>
+          <div id="slideContent" class="slide-content"></div>
+          <div class="slider-nav">
+            <button class="section-action-btn" id="prevSlideBtn" type="button" hidden>
+              Anterior
+            </button>
+            <button class="section-action-btn" id="nextSlideBtn" type="button">
+              Siguiente
+            </button>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <a class="back-link" href="metodologias-agiles.html">← Volver a clases</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      function initSlider(titleEl, contentEl, prevBtn, nextBtn, slides) {
+        let current = 0;
+
+        function render() {
+          const slide = slides[current];
+          titleEl.textContent = slide.title || "";
+          contentEl.innerHTML = slide.html;
+          prevBtn.hidden = current === 0;
+          nextBtn.disabled = current === slides.length - 1;
+          nextBtn.textContent = current === slides.length - 1 ? "Final" : "Siguiente";
+        }
+
+        prevBtn.addEventListener("click", () => {
+          current = Math.max(0, current - 1);
+          render();
+        });
+
+        nextBtn.addEventListener("click", () => {
+          current = Math.min(slides.length - 1, current + 1);
+          render();
+        });
+
+        render();
+      }
+
+      const slides = [
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_60.png" alt="Imagen MA_60" />
+            </div>
+          `,
+        },
+        {
+          title: "Eficiencia ≠ eficacia",
+          html: `
+            <section class="modal-section">
+              <h3>Dos dimensiones diferentes</h3>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>EFICIENCIA DE DELIVERY</h3>
+                <p><strong>¿Construimos bien?</strong></p>
+                <ul>
+                  <li>tiempo;</li>
+                  <li>calidad;</li>
+                  <li>productividad;</li>
+                  <li>defectos;</li>
+                  <li>predictibilidad.</li>
+                </ul>
+              </article>
+
+              <article class="modal-section">
+                <h3>EFICACIA DE PRODUCTO</h3>
+                <p><strong>¿Construimos algo que genera valor?</strong></p>
+                <ul>
+                  <li>adopción;</li>
+                  <li>uso;</li>
+                  <li>comportamiento;</li>
+                  <li>retención;</li>
+                  <li>outcome;</li>
+                  <li>impacto de negocio.</li>
+                </ul>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <h3>Visual</h3>
+              <p><strong>Delivery excelente + Producto irrelevante = fracaso muy eficiente</strong></p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Mensaje</h3>
+              <p>Ser ágil no es solamente acelerar.</p>
+              <p>También es descubrir cuándo NO construir.</p>
+            </section>
+          `,
+        },
+        {
+          title: "De pedido a problema",
+          html: `
+            <section class="modal-section">
+              <h3>Visual principal</h3>
+              <p><strong>PEDIDO</strong></p>
+              <p>"Necesitamos un botón de emergencia."</p>
+              <p>↓</p>
+              <p><strong>PROBLEMA</strong></p>
+              <p>¿Qué está ocurriendo realmente?</p>
+              <p>↓</p>
+              <p><strong>OUTCOME</strong></p>
+              <p>¿Qué comportamiento queremos modificar?</p>
+              <p>↓</p>
+              <p><strong>HIPÓTESIS</strong></p>
+              <p>¿Qué creemos que podría producir ese cambio?</p>
+              <p>↓</p>
+              <p><strong>SOLUCIÓN</strong></p>
+              <p>¿Qué podríamos construir o probar?</p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Mensaje central</h3>
+              <p>Una solución solicitada sigue siendo una apuesta hasta que existe evidencia.</p>
+            </section>
+          `,
+        },
+        {
+          title: "De pedido a problema",
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_61.png" alt="Imagen MA_61" />
+            </div>
+          `,
+        },
+        {
+          title: "¿Cuánto Discovery necesitamos?",
+          html: `
+            <section class="modal-section">
+              <p>No todo requiere tres semanas de entrevistas.</p>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Incertidumbre baja</h3>
+                <p><strong>Ejemplo:</strong></p>
+                <p>"Actualizar un texto legal obligatorio."</p>
+                <p><strong>→ Delivery directo</strong></p>
+              </article>
+
+              <article class="modal-section">
+                <h3>Incertidumbre media</h3>
+                <p><strong>Ejemplo:</strong></p>
+                <p>"Agregar un filtro solicitado repetidamente."</p>
+                <p><strong>→ Discovery ligero</strong></p>
+                <p>Prototipo + algunas conversaciones + datos existentes.</p>
+              </article>
+            </div>
+
+            <section class="modal-section">
+              <h3>Incertidumbre alta</h3>
+              <p><strong>Ejemplo:</strong></p>
+              <p>"Crear consultas médicas de emergencia 24/7."</p>
+              <p><strong>→ Discovery profundo</strong></p>
+              <p>Problema + comportamiento + regulación + factibilidad + modelo económico.</p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Regla</h3>
+              <p>A mayor incertidumbre y costo del error, mayor necesidad de Discovery.</p>
+            </section>
+          `,
+        },
+        {
+          title: "Las cuatro preguntas detrás de una idea",
+          html: `
+            <section class="modal-section">
+              <p>Antes de construir, investigar al menos:</p>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>1. VALOR</h3>
+                <p>¿El usuario realmente lo necesita?</p>
+              </article>
+
+              <article class="modal-section">
+                <h3>2. USABILIDAD</h3>
+                <p>¿Puede entenderlo y utilizarlo?</p>
+              </article>
+            </div>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>3. FACTIBILIDAD</h3>
+                <p>¿Podemos construirlo con nuestra tecnología, capacidades y restricciones?</p>
+              </article>
+
+              <article class="modal-section">
+                <h3>4. VIABILIDAD</h3>
+                <p>¿Funciona para el negocio y su contexto?</p>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <h3>SEGURIDAD / ÉTICA / COMPLIANCE</h3>
+              <p>En Vitalis aparece además una condición transversal.</p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p>Porque una hipótesis atractiva comercialmente puede seguir siendo inviable en salud.</p>
+            </section>
+          `,
+        },
+        {
+          title: "Las cuatro preguntas detrás de una idea",
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_62.png" alt="Imagen MA_62" />
+            </div>
+          `,
+        },
+        {
+          title: "Las cuatro preguntas detrás de una idea",
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_63.png" alt="Imagen MA_63" />
+            </div>
+          `,
+        },
+        {
+          title: "Hipótesis ≠ idea",
+          html: `
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Idea</h3>
+                <p><strong>"Los recordatorios por voz serían útiles."</strong></p>
+                <p>Difícil de validar.</p>
+              </article>
+
+              <article class="modal-section">
+                <h3>Hipótesis</h3>
+                <p><strong>Creemos que...</strong></p>
+                <p>pacientes con tratamientos superiores a 7 días</p>
+                <p><strong>tienen este problema...</strong></p>
+                <p>olvidan tomas y pierden continuidad</p>
+                <p><strong>y que...</strong></p>
+                <p>un recordatorio por voz</p>
+                <p><strong>producirá...</strong></p>
+                <p>mayor adherencia al seguimiento.</p>
+                <p><strong>Lo sabremos si...</strong></p>
+                <p>X comportamiento supera Y umbral.</p>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-quote">
+              <p><strong>Una hipótesis necesita:</strong></p>
+              <p>USUARIO + PROBLEMA + CAMBIO ESPERADO + MÉTRICA + UMBRAL</p>
+            </section>
+          `,
+        },
+        {
+          title: "El experimento no prueba que “tenemos razón”",
+          html: `
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Objetivo incorrecto</h3>
+                <p><strong>"Demostrar que la funcionalidad funciona."</strong></p>
+              </article>
+
+              <article class="modal-section highlight-blue">
+                <h3>Objetivo correcto</h3>
+                <p><strong>Reducir incertidumbre suficiente para tomar una decisión.</strong></p>
+              </article>
+            </div>
+
+            <section class="modal-section">
+              <p><strong>Antes:</strong></p>
+              <p>"Creemos que..."</p>
+              <p><strong>Después:</strong></p>
+              <p>"La evidencia indica que..."</p>
+            </section>
+
+            <section class="modal-section">
+              <p>No buscamos certeza absoluta.</p>
+              <p>Buscamos una mejor decisión.</p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Frase</h3>
+              <p>Validar no es confirmar nuestras ideas. También debemos permitir que la evidencia las destruya.</p>
+            </section>
+          `,
+        },
+        {
+          title: "Validación de hipótesis",
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_64.png" alt="Imagen MA_64" />
+            </div>
+          `,
+        },
+        {
+          title: "Validación de hipótesis",
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_65.png" alt="Imagen MA_65" />
+            </div>
+          `,
+        },
+        {
+          title: "La trampa de las métricas de vanidad",
+          html: `
+            <section class="modal-section highlight-blue">
+              <h3>Dashboard</h3>
+              <p>120.000 descargas</p>
+              <p>48.000 registros</p>
+              <p>800.000 visitas</p>
+              <p><strong>🎉</strong></p>
+            </section>
+
+            <section class="modal-section">
+              <h3>Pero...</h3>
+              <ul>
+                <li>¿cuántos agendaron?</li>
+                <li>¿cuántos asistieron?</li>
+                <li>¿cuántos resolvieron su necesidad?</li>
+                <li>¿cuántos volvieron?</li>
+                <li>¿cuántos abandonaron?</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p>Los números grandes pueden impresionar sin explicar valor.</p>
+            </section>
+          `,
+        },
+        {
+          title: "Métricas accionables",
+          html: `
+            <section class="modal-section">
+              <p>Una métrica útil ayuda a responder:</p>
+              <p><strong>¿Qué debemos decidir?</strong></p>
+            </section>
+
+            <section class="modal-section">
+              <h3>Ejemplo Vitalis</h3>
+              <p><strong>❌ Descargas de la app</strong></p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Más accionable</h3>
+              <ul>
+                <li>✅ % que agenda una primera consulta.</li>
+                <li>✅ % que efectivamente asiste.</li>
+                <li>✅ % que completa seguimiento.</li>
+                <li>✅ tiempo hasta conseguir atención.</li>
+                <li>✅ tasa de abandono del flujo.</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p>La métrica debe estar conectada al comportamiento que la hipótesis pretende modificar.</p>
+            </section>
+          `,
+        },
+        {
+          title: "Un experimento necesita un umbral",
+          html: `
+            <section class="modal-section">
+              <p><strong>Hipótesis:</strong></p>
+              <p>"Existe interés en recordatorios por voz."</p>
+            </section>
+
+            <section class="modal-section">
+              <p><strong>Métrica:</strong></p>
+              <p>% que intenta activarlos.</p>
+            </section>
+
+            <section class="modal-section">
+              <p>Todavía falta algo.</p>
+              <p><strong>¿Cuánto es suficiente?</strong></p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Ejemplo</h3>
+              <p>Si al menos 20% de los pacientes elegibles intenta activar la funcionalidad durante el piloto, avanzamos a una prueba Concierge.</p>
+              <p>Si queda debajo: investigamos la causa antes de construir.</p>
+            </section>
+
+            <section class="modal-section">
+              <h3>Estructura</h3>
+              <p><strong>SI [RESULTADO]</strong></p>
+              <p><strong>ENTONCES [DECISIÓN]</strong></p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p>El umbral debe definirse antes de conocer el resultado.</p>
+            </section>
+          `,
+        },
+        {
+          title: "Umbral de decisión",
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_66.png" alt="Imagen MA_66" />
+            </div>
+          `,
+        },
+        {
+          title: "Umbral de decisión",
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_67.png" alt="Imagen MA_67" />
+            </div>
+          `,
+        },
+      ];
+
+      initSlider(
+        document.getElementById("slideTitle"),
+        document.getElementById("slideContent"),
+        document.getElementById("prevSlideBtn"),
+        document.getElementById("nextSlideBtn"),
+        slides
+      );
+    </script>
+  </body>
+</html>
