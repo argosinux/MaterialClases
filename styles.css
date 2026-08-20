@@ -156,8 +156,8 @@ h1 {
 .card-button {
   display: inline-block;
   margin-top: 14px;
-  padding: 8px 13px;
-  font-size: 0.8rem;
+  padding: 6px 9px;
+  font-size: 0.56rem;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--orange), var(--amber));
   color: white;
@@ -264,7 +264,8 @@ h1 {
 
 .section-action-btn {
   margin: 8px 0 12px;
-  padding: 10px 16px;
+  padding: 7px 11px;
+  font-size: 0.7rem;
   border: none;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--orange), var(--amber));
