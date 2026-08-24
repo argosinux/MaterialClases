@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase 6 - Fidelización y Customer Success</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="secondary-page">
+    <main class="page-shell">
+      <section class="page-card">
+        <p class="eyebrow">Clase 6 - Fidelización y Customer Success</p>
+        <div class="slider-shell">
+          <h2 id="slideTitle"></h2>
+          <div id="slideContent" class="slide-content"></div>
+          <div class="slider-nav">
+            <button class="section-action-btn" id="prevSlideBtn" type="button" hidden>Anterior</button>
+            <button class="section-action-btn" id="nextSlideBtn" type="button">Siguiente</button>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <a class="back-link" href="customerexperience.html">Volver a clases</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      function initSlider(titleEl, contentEl, prevBtn, nextBtn, slides) {
+        let current = 0;
+
+        function render() {
+          const slide = slides[current];
+          titleEl.textContent = slide.title;
+          contentEl.innerHTML = slide.html;
+          prevBtn.hidden = current === 0;
+          nextBtn.disabled = current === slides.length - 1;
+          nextBtn.textContent = current === slides.length - 1 ? "Final" : "Siguiente";
+        }
+
+        prevBtn.addEventListener("click", () => {
+          current = Math.max(0, current - 1);
+          render();
+        });
+
+        nextBtn.addEventListener("click", () => {
+          current = Math.min(slides.length - 1, current + 1);
+          render();
+        });
+
+        render();
+      }
+
+      const slides = [
+        {
+          title: "Fidelización y Customer Success",
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_60.png" alt="Fidelización y Customer Success" />
+            </div>
+          `,
+        },
+        {
+          title: "Fidelización y Customer Success",
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_62.png" alt="Fidelización y Customer Success" />
+            </div>
+          `,
+        },
+        {
+          title: "Retención ≠ Fidelización",
+          html: `
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>RETENCIÓN</h3>
+                <p>Responde:</p>
+                <p><strong>¿El cliente continúa con nosotros?</strong></p>
+                <p>Se observa mediante comportamiento:</p>
+                <ul>
+                  <li>renovación;</li>
+                  <li>recompra;</li>
+                  <li>permanencia;</li>
+                  <li>churn;</li>
+                  <li>cancelación.</li>
+                </ul>
+              </article>
+
+              <article class="modal-section">
+                <h3>FIDELIZACIÓN</h3>
+                <p>Responde:</p>
+                <p><strong>¿Por qué continúa eligiéndonos?</strong></p>
+                <p>Puede estar relacionada con:</p>
+                <ul>
+                  <li>valor percibido;</li>
+                  <li>confianza;</li>
+                  <li>experiencia;</li>
+                  <li>preferencia;</li>
+                  <li>vínculo;</li>
+                  <li>conveniencia;</li>
+                  <li>hábito;</li>
+                  <li>costos de cambio.</li>
+                </ul>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-quote">
+              <h3>Podemos tener retención sin verdadera fidelidad.</h3>
+            </section>
+          `,
+        },
+        {
+          title: "Lealtad conductual vs. actitudinal",
+          html: `
+            <section class="modal-section highlight-blue">
+              <h3>DOS FORMAS DE MIRAR LA LEALTAD</h3>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>LEALTAD CONDUCTUAL</h3>
+                <p>Lo que el cliente <strong>hace</strong>.</p>
+                <ul>
+                  <li>compra;</li>
+                  <li>renueva;</li>
+                  <li>repite;</li>
+                  <li>permanece.</li>
+                </ul>
+              </article>
+
+              <article class="modal-section">
+                <h3>LEALTAD ACTITUDINAL</h3>
+                <p>Lo que el cliente <strong>prefiere</strong>.</p>
+                <ul>
+                  <li>confía;</li>
+                  <li>recomienda;</li>
+                  <li>elige;</li>
+                  <li>defiende;</li>
+                  <li>muestra afinidad.</li>
+                </ul>
+              </article>
+            </div>
+
+            <section class="modal-section">
+              <h3>Ejemplo</h3>
+              <p>Cliente:</p>
+              <p><strong>"Compro siempre aquí porque es el supermercado que tengo debajo de casa."</strong></p>
+              <p>Conducta:</p>
+              <p><strong>✅ Alta.</strong></p>
+              <p>Preferencia:</p>
+              <p><strong>❓ No sabemos.</strong></p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>REPETIR UNA COMPRA NO DEMUESTRA POR SÍ SOLO PREFERENCIA.</h3>
+            </section>
+          `,
+        },
+        {
+          title: "Leading vs. Lagging Indicators",
+          html: `
+            <section class="modal-section highlight-blue">
+              <h3>INDICADORES ADELANTADOS Y REZAGADOS</h3>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>LAGGING INDICATORS</h3>
+                <p>Nos cuentan algo que <strong>ya ocurrió</strong>.</p>
+                <p>Ejemplos:</p>
+                <ul>
+                  <li>churn;</li>
+                  <li>cancelación;</li>
+                  <li>pérdida de clientes;</li>
+                  <li>pérdida de ingresos.</li>
+                </ul>
+              </article>
+
+              <article class="modal-section">
+                <h3>LEADING INDICATORS</h3>
+                <p>Pueden anticipar un problema.</p>
+                <p>Ejemplos:</p>
+                <ul>
+                  <li>menor uso;</li>
+                  <li>menor frecuencia;</li>
+                  <li>caída de engagement;</li>
+                  <li>menos sesiones;</li>
+                  <li>menor apertura de comunicaciones;</li>
+                  <li>abandono de funcionalidades;</li>
+                  <li>aumento de tickets.</li>
+                </ul>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <p><strong>SEÑAL → RIESGO → INTERVENCIÓN → RESULTADO</strong></p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>¿Preferimos detectar que un cliente se fue o detectar que está comenzando a alejarse?</h3>
+            </section>
+          `,
+        },
+        {
+          title: "HEALTH SCORE",
+          html: `
+            <section class="modal-section highlight-blue">
+              <h3>Caso Laura</h3>
+              <p><strong>CONOZCAMOS A LAURA</strong></p>
+            </section>
+
+            <section class="modal-section">
+              <p>Laura lleva:</p>
+              <h3>14 meses</h3>
+              <p>suscripta a una caja mensual de café.</p>
+            </section>
+
+            <section class="modal-section">
+              <p>Hasta ahora:</p>
+              <ul>
+                <li>✅ Compra todos los meses.</li>
+                <li>✅ Buenas evaluaciones.</li>
+                <li>✅ Nunca canceló.</li>
+                <li>✅ Nunca dejó de pagar.</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p><strong>Pero...</strong></p>
+              <p>Hace 40 días dejó de votar su café favorito.</p>
+              <p>Antes lo hacía todos los meses.</p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>¿SEÑAL IRRELEVANTE O PRIMER INDICIO DE DESVINCULACIÓN?</h3>
+            </section>
+          `,
+        },
+        {
+          title: "¿Qué es un Health Score?",
+          html: `
+            <section class="modal-section highlight-blue">
+              <h3>HEALTH SCORE</h3>
+              <p>Indicador compuesto que resume el <strong>estado de la relación con un cliente</strong> a partir de múltiples señales.</p>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Ejemplo</h3>
+                <p><strong>Variable</strong> - <strong>Peso</strong></p>
+                <ul>
+                  <li>Uso / consumo - 30%</li>
+                  <li>Frecuencia - 20%</li>
+                  <li>Engagement - 20%</li>
+                  <li>Soporte - 15%</li>
+                  <li>Satisfacción - 15%</li>
+                </ul>
+              </article>
+
+              <article class="modal-section">
+                <h3>Resultado</h3>
+                <p><strong>0–59 🔴</strong></p>
+                <p>Riesgo elevado</p>
+                <p><strong>60–79 🟡</strong></p>
+                <p>Atención</p>
+                <p><strong>80–100 🟢</strong></p>
+                <p>Saludable</p>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-quote">
+              <h3>EL HEALTH SCORE ES UNA GUÍA PARA PRIORIZAR, NO UNA BOLA DE CRISTAL.</h3>
+            </section>
+          `,
+        },
+        {
+          title: "¿Cómo ponderamos las señales?",
+          html: `
+            <section class="modal-section highlight-blue">
+              <h3>NO TODAS LAS SEÑALES PESAN IGUAL</h3>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Ejemplo</h3>
+                <p>Cliente presenta:</p>
+                <ul>
+                  <li>3 tickets;</li>
+                  <li>compra mensual;</li>
+                  <li>alto engagement;</li>
+                  <li>responde encuestas.</li>
+                </ul>
+              </article>
+
+              <article class="modal-section">
+                <h3>Otro cliente</h3>
+                <ul>
+                  <li>0 tickets;</li>
+                  <li>70 días sin comprar;</li>
+                  <li>no abre emails;</li>
+                  <li>no entra a la aplicación.</li>
+                </ul>
+              </article>
+            </div>
+
+            <section class="modal-section">
+              <h3>¿Cuál parece más riesgoso?</h3>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>EL CLIENTE QUE SE QUEJA TODAVÍA ESTÁ INTERACTUANDO.</h3>
+              <h3>EL CLIENTE SILENCIOSO PUEDE SER MÁS DIFÍCIL DE DETECTAR.</h3>
+            </section>
+          `,
+        },
+        {
+          title: "Health Score: señal ≠ causa",
+          html: `
+            <section class="modal-section highlight-blue">
+              <h3>CUIDADO CON CONFUNDIR CORRELACIÓN CON CERTEZA</h3>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Dato</h3>
+                <p>Laura dejó de votar.</p>
+
+                <h3>Conclusión incorrecta</h3>
+                <p><strong>❌ “Laura va a cancelar.”</strong></p>
+
+                <h3>Conclusión correcta</h3>
+                <p><strong>✅ “Tenemos una señal que merece observación.”</strong></p>
+              </article>
+
+              <article class="modal-section">
+                <h3>Posibles explicaciones alternativas</h3>
+                <ul>
+                  <li>perdió interés;</li>
+                  <li>cambió hábitos;</li>
+                  <li>no utiliza tanto la app;</li>
+                  <li>está satisfecha pero no quiere interactuar;</li>
+                  <li>problema técnico;</li>
+                  <li>simplemente olvidó hacerlo.</li>
+                </ul>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-quote">
+              <h3>UNA SEÑAL GENERA UNA HIPÓTESIS. NO UNA SENTENCIA.</h3>
+            </section>
+          `,
+        },
+        {
+          title: "RFM: mirar comportamiento real",
+          html: `
+            <section class="modal-section highlight-blue">
+              <h3>RECENCY — FREQUENCY — MONETARY</h3>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>R — Recencia</h3>
+                <p>¿Cuándo compró por última vez?</p>
+
+                <h3>F — Frecuencia</h3>
+                <p>¿Cuántas veces compró?</p>
+
+                <h3>M — Monto</h3>
+                <p>¿Cuánto gastó?</p>
+              </article>
+
+              <article class="modal-section">
+                <h3>Concepto de RFM</h3>
+                <p>RFM es un modelo simple de segmentación que clasifica clientes según <strong>recencia</strong>, <strong>frecuencia</strong> y <strong>valor monetario</strong>.</p>
+                <p>Sirve para detectar clientes activos, valiosos, en riesgo o con potencial de reactivación a partir de su comportamiento real.</p>
+              </article>
+            </div>
+
+            <section class="modal-section">
+              <h3>Ventaja</h3>
+              <p><strong>RFM trabaja con comportamiento observado.</strong></p>
+              <p>No preguntamos:</p>
+              <p><strong>“¿Se considera fiel?”</strong></p>
+              <p>Miramos:</p>
+              <p><strong>“¿Qué hizo?”</strong></p>
+            </section>
+          `,
+        },
+        {
+          title: "RFM: mirar comportamiento real",
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_66RFM.png" alt="RFM: mirar comportamiento real" />
+            </div>
+          `,
+        },
+        {
+          title: "Fidelización y Customer Success",
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_63.png" alt="Fidelización y Customer Success" />
+            </div>
+          `,
+        },
+        {
+          title: "Fidelización y Customer Success",
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_64.png" alt="Fidelización y Customer Success" />
+            </div>
+          `,
+        },
+        {
+          title: "Fidelización y Customer Success",
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_65.png" alt="Fidelización y Customer Success" />
+            </div>
+          `,
+        },
+        {
+          title: "Fidelización y Customer Success",
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_67.png" alt="Fidelización y Customer Success" />
+            </div>
+          `,
+        },
+        {
+          title: "Fidelización y Customer Success",
+          html: `
+            <div class="image-slide">
+              <img src="img/CX_68.png" alt="Fidelización y Customer Success" />
+            </div>
+          `,
+        },
+      ];
+
+      initSlider(
+        document.getElementById("slideTitle"),
+        document.getElementById("slideContent"),
+        document.getElementById("prevSlideBtn"),
+        document.getElementById("nextSlideBtn"),
+        slides
+      );
+    </script>
+  </body>
+</html>
