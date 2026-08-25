@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase 7 - Design Thinking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="secondary-page">
+    <main class="page-shell">
+      <section class="page-card">
+        <p class="eyebrow">Clase 7 - Design Thinking</p>
+
+        <div class="slider-shell">
+          <h2 id="slideTitle"></h2>
+          <div id="slideContent" class="slide-content"></div>
+          <div class="slider-nav">
+            <button class="section-action-btn" id="prevSlideBtn" type="button" hidden>
+              Anterior
+            </button>
+            <button class="section-action-btn" id="nextSlideBtn" type="button">
+              Siguiente
+            </button>
+          </div>
+        </div>
+
+        <a class="back-link" href="metodologias-agiles.html">← Volver a clases</a>
+      </section>
+    </main>
+
+    <script>
+      function initSlider(titleEl, contentEl, prevBtn, nextBtn, slides) {
+        let current = 0;
+
+        function render() {
+          const slide = slides[current];
+          titleEl.textContent = slide.title || "";
+          contentEl.innerHTML = slide.html;
+          prevBtn.hidden = current === 0;
+          nextBtn.disabled = current === slides.length - 1;
+          nextBtn.textContent = current === slides.length - 1 ? "Final" : "Siguiente";
+        }
+
+        prevBtn.addEventListener("click", () => {
+          current = Math.max(0, current - 1);
+          render();
+        });
+
+        nextBtn.addEventListener("click", () => {
+          current = Math.min(slides.length - 1, current + 1);
+          render();
+        });
+
+        render();
+      }
+
+      const slides = [
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_73.png" alt="Design Thinking" />
+            </div>
+          `,
+        },
+        {
+          title: "¿Qué es Design Thinking?",
+          html: `
+            <section class="modal-section">
+              <p>Design Thinking es un enfoque para resolver problemas e innovar poniendo a las <strong>personas y su contexto</strong> en el centro del proceso.</p>
+            </section>
+
+            <section class="modal-section">
+              <p>Busca comprender:</p>
+              <ul>
+                <li>qué intenta hacer la persona;</li>
+                <li>qué problemas encuentra;</li>
+                <li>qué necesita realmente;</li>
+                <li>qué comportamientos presenta;</li>
+                <li>qué alternativas podrían resolver el problema;</li>
+                <li>qué evidencia necesitamos antes de construir a gran escala.</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>COMPRENDER → DEFINIR → EXPLORAR → PROBAR → APRENDER</h3>
+            </section>
+
+            <section class="modal-section">
+              <p>No comienza preguntando:</p>
+              <p><strong>“¿Qué producto vamos a construir?”</strong></p>
+              <p>Comienza preguntando:</p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p><strong>“¿Qué problema merece ser resuelto?”</strong></p>
+            </section>
+          `,
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/ma_74.png" alt="Design Thinking" />
+            </div>
+          `,
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_75.png" alt="Design Thinking" />
+            </div>
+          `,
+        },
+        {
+          title: "EMPATIZAR",
+          html: `
+            <section class="modal-section highlight-blue">
+              <h3>Comprender antes de solucionar</h3>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <p>El banco todavía no construye nada.</p>
+                <p>Primero investiga.</p>
+                <p>Selecciona clientes que hayan realizado recientemente transferencias internacionales.</p>
+                <p>Utiliza:</p>
+                <ul>
+                  <li>entrevistas;</li>
+                  <li>observación;</li>
+                  <li>análisis de llamadas;</li>
+                  <li>analítica digital;</li>
+                  <li>Customer Journey Map;</li>
+                  <li>consultas al personal de soporte.</li>
+                </ul>
+              </article>
+
+              <article class="modal-section">
+                <h3>Ejemplo de entrevista</h3>
+                <p><strong>Investigador:</strong></p>
+                <p>“Cuénteme la última vez que realizó una transferencia internacional.”</p>
+                <p><strong>Cliente:</strong></p>
+                <p>“La hice el lunes. El dinero salió de mi cuenta, pero el miércoles todavía no había llegado.”</p>
+                <p><strong>Investigador:</strong></p>
+                <p>“¿Qué hizo?”</p>
+                <p><strong>Cliente:</strong></p>
+                <p>“Entré varias veces a la aplicación.”</p>
+                <p><strong>Investigador:</strong></p>
+                <p>“¿Qué encontró?”</p>
+                <p><strong>Cliente:</strong></p>
+                <p>“Decía ‘procesando’. No sabía qué significaba.”</p>
+                <p><strong>Investigador:</strong></p>
+                <p>“¿Qué hizo después?”</p>
+                <p><strong>Cliente:</strong></p>
+                <p>“Llamé al banco.”</p>
+              </article>
+            </div>
+
+            <section class="modal-section">
+              <h3>Otros clientes</h3>
+              <p>“No sabía si había cometido un error o si era normal que tardara.”</p>
+              <p>“La transferencia finalmente llegó. Mi problema era que durante dos días no sabía qué estaba ocurriendo.”</p>
+              <p>“No necesitaba hablar con una persona. Solo quería saber dónde estaba mi dinero.”</p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p>Aquí empieza a aparecer algo importante.</p>
+            </section>
+          `,
+        },
+      ];
+
+      initSlider(
+        document.getElementById("slideTitle"),
+        document.getElementById("slideContent"),
+        document.getElementById("prevSlideBtn"),
+        document.getElementById("nextSlideBtn"),
+        slides
+      );
+    </script>
+  </body>
+</html>
