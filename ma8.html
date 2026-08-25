@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase 8 - Kanban</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="secondary-page">
+    <main class="page-shell">
+      <section class="page-card">
+        <p class="eyebrow">Clase 8 - Kanban</p>
+
+        <div class="slider-shell">
+          <h2 id="slideTitle"></h2>
+          <div id="slideContent" class="slide-content"></div>
+          <div class="slider-nav">
+            <button class="section-action-btn" id="prevSlideBtn" type="button" hidden>
+              Anterior
+            </button>
+            <button class="section-action-btn" id="nextSlideBtn" type="button">
+              Siguiente
+            </button>
+          </div>
+        </div>
+
+        <a class="back-link" href="metodologias-agiles.html">← Volver a clases</a>
+      </section>
+    </main>
+
+    <script>
+      function initSlider(titleEl, contentEl, prevBtn, nextBtn, slides) {
+        let current = 0;
+
+        function render() {
+          const slide = slides[current];
+          titleEl.textContent = slide.title || "";
+          contentEl.innerHTML = slide.html;
+          prevBtn.hidden = current === 0;
+          nextBtn.disabled = current === slides.length - 1;
+          nextBtn.textContent = current === slides.length - 1 ? "Final" : "Siguiente";
+        }
+
+        prevBtn.addEventListener("click", () => {
+          current = Math.max(0, current - 1);
+          render();
+        });
+
+        nextBtn.addEventListener("click", () => {
+          current = Math.min(slides.length - 1, current + 1);
+          render();
+        });
+
+        render();
+      }
+
+      const slides = [
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_80.png" alt="Kanban" />
+            </div>
+          `,
+        },
+        {
+          title: "La inspiración del supermercado",
+          html: `
+            <section class="modal-section">
+              <p>Aquí aparece una de las historias más interesantes del origen de Kanban.</p>
+              <p>Toyota encontró una analogía útil en los:</p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>🛒 SUPERMERCADOS</h3>
+            </section>
+
+            <section class="modal-section">
+              <p>Imagine un supermercado.</p>
+              <p>El supermercado no coloca:</p>
+              <p><strong>5.000 botellas de leche en una estantería</strong></p>
+              <p>solo porque tiene capacidad para comprarlas.</p>
+            </section>
+
+            <section class="modal-section">
+              <ol>
+                <li>el cliente retira productos;</li>
+                <li>disminuye el inventario;</li>
+                <li>esa disminución genera una señal;</li>
+                <li>se repone únicamente lo consumido.</li>
+              </ol>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p>Toyota describe precisamente que parte de la inspiración del sistema vino de los supermercados, donde los productos vendidos son posteriormente repuestos.</p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <p>La idea cambia radicalmente la lógica de producción.</p>
+            </section>
+          `,
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_81.png" alt="Kanban" />
+            </div>
+          `,
+        },
+        {
+          title: "¿Para qué servía una tarjeta Kanban?",
+          html: `
+            <section class="modal-section">
+              <p>En manufactura, una tarjeta Kanban podía transmitir información relacionada con:</p>
+              <ul>
+                <li>qué pieza se necesitaba;</li>
+                <li>qué cantidad;</li>
+                <li>cuándo debía reponerse;</li>
+                <li>desde qué proceso;</li>
+                <li>hacia qué proceso.</li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <p><strong>PROCESO B CONSUME</strong></p>
+              <p>↓</p>
+              <p><strong>SE GENERA UNA SEÑAL</strong></p>
+              <p>↓</p>
+              <p><strong>KANBAN</strong></p>
+              <p>↓</p>
+              <p><strong>PROCESO A REPONE</strong></p>
+              <p>↓</p>
+              <p><strong>SOLO LA CANTIDAD NECESARIA</strong></p>
+            </section>
+
+            <section class="modal-section">
+              <p>La tarjeta no era simplemente un elemento decorativo.</p>
+              <p>Era un:</p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>MECANISMO DE CONTROL DEL FLUJO.</h3>
+            </section>
+          `,
+        },
+        {
+          title: "La conexión con Just-in-Time",
+          html: `
+            <section class="modal-section">
+              <p>Kanban se convirtió en un mecanismo importante para hacer posible la lógica <strong>Just-in-Time</strong>.</p>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>SOBREPRODUCCIÓN</h3>
+                <p>Producir algo que todavía nadie necesita.</p>
+
+                <h3>INVENTARIO EXCESIVO</h3>
+                <p>Acumular trabajo entre procesos.</p>
+              </article>
+
+              <article class="modal-section">
+                <h3>ESPERA</h3>
+                <p>Material detenido.</p>
+
+                <h3>DESCOORDINACIÓN</h3>
+                <p>Una etapa produce mucho más rápido de lo que la siguiente puede consumir.</p>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-quote">
+              <p><strong>No producir porque puedo. Producir porque existe una necesidad y capacidad del sistema.</strong></p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <p>Aquí ya podemos reconocer el ADN del Kanban moderno.</p>
+            </section>
+          `,
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_82.png" alt="Kanban" />
+            </div>
+          `,
+        },
+        {
+          title: "Del inventario físico al WIP",
+          html: `
+            <section class="modal-section">
+              <p>Podemos establecer la analogía:</p>
+            </section>
+
+            <div class="modal-columns">
+              <article class="modal-section">
+                <h3>Toyota / Manufactura</h3>
+                <ul>
+                  <li>Pieza</li>
+                  <li>Inventario</li>
+                  <li>Estación de producción</li>
+                  <li>Tarjeta Kanban</li>
+                  <li>Reposición</li>
+                  <li>Producto terminado</li>
+                  <li>Cola física</li>
+                  <li>Tiempo de producción</li>
+                </ul>
+              </article>
+
+              <article class="modal-section">
+                <h3>Trabajo del conocimiento</h3>
+                <ul>
+                  <li>Historia / ticket</li>
+                  <li>WIP</li>
+                  <li>Etapa del workflow</li>
+                  <li>Tarjeta de trabajo</li>
+                  <li>Pull</li>
+                  <li>Valor entregado</li>
+                  <li>Trabajo esperando</li>
+                  <li>Cycle Time</li>
+                </ul>
+              </article>
+            </div>
+
+            <section class="modal-section highlight-blue">
+              <h3>EL WIP ES INVENTARIO.</h3>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p><strong>no siempre podemos verlo físicamente.</strong></p>
+              <p>Por eso Kanban primero lo hace visible.</p>
+            </section>
+          `,
+        },
+        {
+          title: "De Toyota al Kanban Method moderno",
+          html: `
+            <section class="modal-section">
+              <p>Aquí conviene hacer otra distinción histórica.</p>
+              <p>El <strong>Kanban Method</strong> utilizado actualmente en trabajo del conocimiento se asocia fundamentalmente con <strong>David J. Anderson</strong>.</p>
+            </section>
+
+            <section class="modal-section">
+              <p>Durante los años 2000, Anderson fue desarrollando y aplicando ideas de:</p>
+              <ul>
+                <li>sistemas pull;</li>
+                <li>teoría de colas;</li>
+                <li>Lean;</li>
+                <li>limitación de WIP;</li>
+                <li>gestión del flujo;</li>
+                <li>cambio evolutivo;</li>
+              </ul>
+              <p>al desarrollo de software y otros servicios profesionales.</p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <p>En <strong>2010</strong> publicó:</p>
+              <h3><em>Kanban: Successful Evolutionary Change for Your Technology Business</em></h3>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p>Ese trabajo es uno de los fundamentos del Kanban Method contemporáneo.</p>
+              <p>Kanban University señala que el método fue desarrollado específicamente para gestionar y mejorar negocios de servicios profesionales, tomando sus raíces de Lean Manufacturing.</p>
+            </section>
+          `,
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_83.png" alt="Kanban" />
+            </div>
+          `,
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_84.png" alt="Kanban" />
+            </div>
+          `,
+        },
+        {
+          title: "El aprendizaje que Kanban hereda de Lean",
+          html: `
+            <section class="modal-section">
+              <p>Por eso la evolución histórica puede resumirse en una idea muy poderosa:</p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>PRODUCIR MÁS</h3>
+              <p>no necesariamente significa</p>
+              <h3>ENTREGAR MÁS.</h3>
+              <p>Puede simplemente significar:</p>
+              <h3>ACUMULAR MÁS.</h3>
+            </section>
+
+            <section class="modal-section">
+              <p>Kanban traslada al trabajo del conocimiento varios principios asociados a Lean:</p>
+              <ul>
+                <li><strong>FLUJO</strong></li>
+                <li><strong>PULL</strong></li>
+                <li><strong>LIMITAR WIP</strong></li>
+                <li><strong>OPTIMIZAR EL SISTEMA</strong></li>
+                <li><strong>DECIDIR CON DATOS</strong></li>
+                <li><strong>MEJORA CONTINUA</strong></li>
+              </ul>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p>Kanban University identifica precisamente estos elementos entre las principales raíces Lean del Kanban Method.</p>
+            </section>
+          `,
+        },
+        {
+          html: `
+            <div class="image-slide">
+              <img src="img/MA_85.png" alt="Kanban" />
+            </div>
+          `,
+        },
+        {
+          title: "Cierre del origen",
+          html: `
+            <section class="modal-section highlight-blue">
+              <h3>KANBAN NO NACIÓ COMO UN TABLERO DE TAREAS.</h3>
+            </section>
+
+            <section class="modal-section">
+              <p>Nació de una pregunta mucho más profunda:</p>
+              <h3>¿CÓMO HACEMOS QUE EL TRABAJO FLUYA SIN SATURAR EL SISTEMA?</h3>
+            </section>
+
+            <section class="modal-section">
+              <p>La respuesta evolucionó:</p>
+              <p><strong>SUPERMERCADO</strong></p>
+              <p>→ <strong>REPOSICIÓN</strong></p>
+              <p>→ <strong>PULL</strong></p>
+              <p>→ <strong>KANBAN</strong></p>
+              <p>→ <strong>JUST-IN-TIME</strong></p>
+              <p>→ <strong>LEAN</strong></p>
+              <p>→ <strong>WIP LIMITS</strong></p>
+              <p>→ <strong>FLOW</strong></p>
+              <p>→ <strong>KANBAN METHOD</strong></p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <p><strong>Si queremos que el trabajo fluya, el primer paso es dejar de empezar trabajo ilimitadamente.</strong></p>
+            </section>
+
+            <section class="modal-section">
+              <p>Por eso, después del origen, entraría directamente en <strong>“Visualizar el trabajo → limitar WIP → establecer Pull”</strong>.</p>
+            </section>
+          `,
+        },
+      ];
+
+      initSlider(
+        document.getElementById("slideTitle"),
+        document.getElementById("slideContent"),
+        document.getElementById("prevSlideBtn"),
+        document.getElementById("nextSlideBtn"),
+        slides
+      );
+    </script>
+  </body>
+</html>
