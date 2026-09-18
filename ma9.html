@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pensamiento Lean</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="secondary-page">
+    <main class="page-shell">
+      <section class="page-card">
+        <p class="eyebrow">Pensamiento Lean</p>
+        <h1>Pensamiento Lean</h1>
+
+        <div class="slider-shell">
+          <h2 id="slideTitle"></h2>
+          <div id="slideContent" class="slide-content"></div>
+          <div class="slider-nav">
+            <button class="section-action-btn" id="prevSlideBtn" type="button" hidden>
+              Anterior
+            </button>
+            <button class="section-action-btn" id="nextSlideBtn" type="button">
+              Siguiente
+            </button>
+          </div>
+        </div>
+
+        <a class="back-link" href="metodologias-agiles.html">← Volver a clases</a>
+      </section>
+    </main>
+
+    <script>
+      function initSlider(titleEl, contentEl, prevBtn, nextBtn, slides) {
+        let current = 0;
+
+        function render() {
+          const slide = slides[current];
+          titleEl.textContent = slide.title || "";
+          contentEl.innerHTML = slide.html;
+          prevBtn.hidden = current === 0;
+          nextBtn.disabled = current === slides.length - 1;
+          nextBtn.textContent = current === slides.length - 1 ? "Final" : "Siguiente";
+        }
+
+        prevBtn.addEventListener("click", () => {
+          current = Math.max(0, current - 1);
+          render();
+        });
+
+        nextBtn.addEventListener("click", () => {
+          current = Math.min(slides.length - 1, current + 1);
+          render();
+        });
+
+        render();
+      }
+
+      const slides = [
+        {
+          title: "¿Qué es realmente el valor?",
+          html: `
+            <section class="modal-section">
+              <ul>
+                <li>El pensamiento Lean tiene su origen en el <strong>Sistema de Producción de Toyota</strong> (Japón, posguerra), desarrollado para eliminar el desperdicio y producir solo lo necesario.</li>
+                <li>Años después, esa filosofía fue adoptada por la industria del software.</li>
+                <li><strong>Valor</strong> = únicamente aquello por lo que el cliente paga o a lo que dedica su tiempo.</li>
+                <li>Todo lo demás — por más sofisticado que sea técnicamente — es <strong>desperdicio (muda)</strong>.</li>
+              </ul>
+              <p>
+                <em>Ejemplo:</em> 📹❌ Vitalis — una videollamada en 4K que nadie pidió no es valor, es desperdicio.
+              </p>
+            </section>
+
+            <section class="modal-section highlight-blue">
+              <h3>Punto clave</h3>
+              <p>
+                "Si el usuario no lo pediría ni lo notaría, es desperdicio."
+              </p>
+            </section>
+
+            <section class="modal-section highlight-quote">
+              <h3>Pregunta generadora</h3>
+              <p>
+                ¿Qué función de una app que usás todos los días creés que nadie pidió?
+              </p>
+            </section>
+          `,
+        },
+      ];
+
+      initSlider(
+        document.getElementById("slideTitle"),
+        document.getElementById("slideContent"),
+        document.getElementById("prevSlideBtn"),
+        document.getElementById("nextSlideBtn"),
+        slides
+      );
+    </script>
+  </body>
+</html>
